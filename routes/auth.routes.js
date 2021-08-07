@@ -1,11 +1,14 @@
 const express = require('express');
-const passport = require('passport');
 const controller = require('../controllers/auth.controller');
 
 const router = express.Router();
 
-router.post('/register', controller.registerPost);
+router.get("/login", controller.loginGet);
+router.post("/login", controller.loginPost);
 
+router.post('/register', controller.registerPost);
 router.post('/login', controller.loginPost);
+
+router.post("/logout", controller.logoutPost);
 
 module.exports = router;

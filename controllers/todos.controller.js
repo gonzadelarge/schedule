@@ -29,4 +29,43 @@ const createPost = async (req, res, next) => {
   return res.json(todo);
 };
 
-module.exports = { indexGet, createPost, }
+const editPost = async (req, res, next) => {
+
+  try {
+
+      const { name, date, message, done } = req.body;
+  
+      const update = {};
+
+      if (name) update.name = name;
+      if (date) update.date = date;
+      if (message) update.message = message;
+      if (typeof done === "boolean") update.done = done;
+  
+      const updateTodo = await Todo.findByIdAndUpdate(id, update, { new: true });
+      return res.json(updateTodo);
+      
+    } catch (error) {
+      return next(error);
+    }
+};
+
+const deletePost = async (req, res, next) => {
+
+  const { id } = req.params;
+
+  try {
+    const deleted = await Todo.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return res.json("El elemento que querías borrar no existe");
+    } else {
+      return res.redirect("/todo");
+    }
+
+  } catch (error) {
+    return next(error);
+  }
+}
+
+module.exports = { indexGet, createPost, editPost, deletePost }
