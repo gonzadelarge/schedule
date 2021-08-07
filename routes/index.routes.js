@@ -1,5 +1,6 @@
 const express = require('express');
 const Todo = require('../models/Todo.model');
+const Meeting = require('../models/Meeting.model');
 const User = require('../models/User.model');
 const router = express.Router();
 
@@ -55,7 +56,7 @@ router.get('/save-todo', async (req, res, next) => {
 router.get('/save-meeting', async (req, res, next) => {
 
     try {
-        const newMeeting = new Todo({
+        const newMeeting = new Meeting({
 
             name: 'job interview',
             date: '-',
@@ -64,8 +65,6 @@ router.get('/save-meeting', async (req, res, next) => {
         });
     
         const meeting = await newMeeting.save();
-
-        console.log(meeting);
     
         return res.json(meeting);
 

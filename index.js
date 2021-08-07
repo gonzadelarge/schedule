@@ -15,6 +15,9 @@ const PORT = process.env.PORT || 4000
 
 const indexRoutes = require('./routes/index.routes');
 const authRoutes = require("./routes/auth.routes");
+const todoRoutes = require("./routes/todo.routes");
+const meetingRoutes = require("./routes/meeting.routes");
+const userRoutes = require("./routes/user.routes");
 
 const app = express();
 
@@ -28,6 +31,9 @@ app.use(passport.session());
 
 app.use('/', indexRoutes);
 app.use("/auth", authRoutes);
+app.use("/todo", todoRoutes);
+app.use("/meet", meetingRoutes);
+app.use("/user", userRoutes);
 
 app.use('*', (req, res, next) => {
     const error = new Error('Route not found');
