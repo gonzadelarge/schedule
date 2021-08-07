@@ -36,10 +36,7 @@ app.use('*', (req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
-    return res.json('error', { 
-        message: error.message || "Unexpected Error", 
-        status: error.status || 500, 
-    });
+    return res.status(error.status || 500).json(error.message || 'Unexpected error')
 });
 
 app.listen(PORT, () => console.log(`Servidor a tota virolla en http://localhost:${PORT}`))
