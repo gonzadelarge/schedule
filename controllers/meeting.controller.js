@@ -4,10 +4,11 @@ const indexGet = async (req, res, next) => {
   try {
     const meeting = await Meeting.find();
 
+    return res.json(meeting)
     return res.render("./schedule/schedule", { meeting, meettitle: "Lista de Reuniones"});
 
   } catch (error) {
-    console.log(error);
+
     return next(error);
   }
 };
@@ -26,8 +27,6 @@ const createPost = async (req, res, next) => {
   });
 
   const meeting = await newMeeting.save();
-
-  console.log(meeting);
 
   return res.json(meeting);
 };

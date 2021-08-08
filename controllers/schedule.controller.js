@@ -45,10 +45,11 @@ const addPost = async (req, res, next) => {
   try {
 
     const id = req.body.id;
+    
     const todos = await Todo.find();
     const meetings = await Meeting.find();
 
-    const scheduleUpdate = {todo:todos, meeting: meetings};
+    const scheduleUpdate = { todo: todos, meeting: meetings };
     const updateSchedule = await Schedule.findByIdAndUpdate(
 
       id,

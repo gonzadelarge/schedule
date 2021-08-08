@@ -13,7 +13,7 @@ const registerPost = (req, res, next) => {
 
   passport.authenticate("register", done)(req);
   
-  return res.redirect("/schedule/schedule");
+  return res.redirect("/schedule");
 };
 
 const loginGet = (req, res, next) => {
@@ -29,7 +29,7 @@ const loginPost = (req, res, next) => {
 
   passport.authenticate("login", done)(req);
 
-  return res.redirect("/schedule/schedule");
+  return res.redirect("/schedule");
 };
 
 const logoutPost = (req, res, next) => {

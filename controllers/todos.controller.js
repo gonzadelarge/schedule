@@ -8,17 +8,33 @@ const indexGet = async (req, res, next) => {
     // return res.render("./schedule/todos", { todos, todotitle: "Lista de Tareas"});
 
   } catch (error) {
-    console.log(error);
+
     return next(error);
   }
 };
+
+const nameGet = async (req, res, next) => {
+
+  const { name } = req.params;
+
+  try {
+
+    const todo = await Todo.find({ name: { '$regex': name, '$options': 'i' } });
+
+    return res.json(todo);
+
+  } catch (error) {
+
+    return next(error);
+  }
+};
+
 
 const createPost = async (req, res, next) => {
 
   const { name, date, message, done } = req.body;
 
   const newTodo = new Todo({
-
     name,
     date,
     message,
@@ -27,8 +43,6 @@ const createPost = async (req, res, next) => {
 
   const todo = await newTodo.save();
 
-  console.log(todo);
-
   return res.json(todo);
 };
 
@@ -36,7 +50,7 @@ const editPost = async (req, res, next) => {
 
   try {
 
-      const { name, date, message, done } = req.body;
+      const { id, name, date, message, done } = req.body;
   
       const update = {};
 
@@ -71,4 +85,4 @@ const deletePost = async (req, res, next) => {
   }
 }
 
-module.exports = { indexGet, createPost, editPost, deletePost }
+module.exports = { indexGet, nameGet, createPost, editPost, deletePost }

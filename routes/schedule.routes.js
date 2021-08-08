@@ -4,7 +4,7 @@ const {isAuth} = require('../middlewares/auth.middlewares');
 
 const router = express.Router();
 
-router.get('/', [isAuth], controller.indexGet);
+router.get('/', controller.indexGet);
 
 router.post('/create', [isAuth], controller.createPost);
 

@@ -4,12 +4,14 @@ const controller = require('../controllers/todos.controller');
 
 const router = express.Router();
 
-router.get('/', [isAuth], controller.indexGet);
+router.get('/', controller.indexGet);
 
-router.post('/create', [isAuth], controller.createPost);
+router.get('/:name', controller.nameGet);
 
-router.put('/edit', [isAuth], controller.editPost);
+router.post('/create', controller.createPost);
 
-router.delete('/delete/:id', [isAuth], controller.deletePost);
+router.put('/edit', controller.editPost);
+
+router.delete('/delete/:id', controller.deletePost);
 
 module.exports = router;
