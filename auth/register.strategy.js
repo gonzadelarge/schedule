@@ -16,7 +16,7 @@ const registerStrategy = new LocalStrategy(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-       return throwError(400, 'El usuario ya existe', done);
+       return next(400, 'El usuario ya existe', done);
     }
 
     if (!isValidEmail(email)) return throwError(400, 'Email inváido', done);

@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
-    <script src="/js/index.js" defer></script>
+    <script src="/js/index.js"></script>
     <title>{{ title }}</title>
 </head>
 <body>
     
    <h1>{{title}}</h1>
     <h2>{{message}}</h2>
-    {{#if isAuthenticated}}
+
+    {{#if isAuth}}
         <form action="/auth/logout" method="POST">
             <button type="submit">Logout</button>
         </form>
@@ -20,7 +21,7 @@
         <a href="/schedule">Agenda</a>
     {{/if}}
 
-    {{#if isAuthenticated}}
+    {{#if isAuth}}
     {{else}}
         <a href="/auth/register">Registro</a>
         <a href="/auth/login">Login</a>

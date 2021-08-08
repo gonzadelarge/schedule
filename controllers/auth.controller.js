@@ -8,7 +8,7 @@ const registerPost = (req, res, next) => {
   const done = (error, user) => {
     if (error) return next(error);
 
-    req.login(user, (error) => (error ? next(error) : res.json(user)));
+    req.login(user, (error) => (error ? next(error) : res.redirect("/")));
   };
 
   passport.authenticate("register", done)(req);
@@ -24,12 +24,14 @@ const loginPost = (req, res, next) => {
   const done = (error, user) => {
     if (error) return next(error);
 
+    console.log('Hola ---------- >')
+
     req.login(user, (error) => (error ? next(error) : res.redirect("/")));
   };
 
   passport.authenticate("login", done)(req);
 
-  return res.redirect("/schedule");
+  return res.redirect("/");
 };
 
 const logoutPost = (req, res, next) => {

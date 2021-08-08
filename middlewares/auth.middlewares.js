@@ -3,7 +3,7 @@ const isAuth = (req, res, next) => {
       return next();
     }
     // Si no está autenticado redirige a login
-    return res.redirect('/auth/login');
+    return res.redirect('/');
   };
 
 const isAdmin = (req, res, next) => {

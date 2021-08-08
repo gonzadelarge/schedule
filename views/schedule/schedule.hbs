@@ -12,18 +12,24 @@
 
     <a href="/">Inicio</a>
 
+    <form action="/schedule/add/?_method=PUT" method="POST">
+        <button type="submit">Actualizar Agenda</button>
+    </form>
+
+    <a href="/todo">Tareas</a>
     <ul>
         {{#each scheduleContain.todo}}
             <li>{{this}}</li>
         {{/each}} 
     </ul>
 
+    
+    <a href="/meeting">Reuniones</a>
     <ul>
         {{#each scheduleContain.meeting}}
             <li>{{this}}</li>
         {{/each}} 
     </ul>
-
-
+    
 </body>
 </html>

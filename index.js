@@ -3,6 +3,8 @@ const passport = require("passport");
 const path = require('path');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
+const cors = require('cors')
+
 
 const session = require('express-session');
 
@@ -17,6 +19,10 @@ auth.useStrategies();
 
 const PORT = process.env.PORT || 4000
 
+let corsOptions = {
+    origin:`http://localhost:${PORT}`
+}
+
 const indexRoutes = require('./routes/index.routes');
 const authRoutes = require("./routes/auth.routes");
 const scheduleRoutes = require("./routes/schedule.routes");
@@ -25,6 +31,7 @@ const meetingRoutes = require("./routes/meeting.routes");
 const userRoutes = require("./routes/user.routes");
 
 const app = express();
+app.use(cors(corsOptions))
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', controller.indexGet);
 
-router.post('/create', [isAuth], controller.createPost);
+router.post('/create', controller.createPost);
 
 router.put('/add', controller.addPost);
 
