@@ -6,11 +6,13 @@ const indexGet = async (req, res, next) => {
     
   try {
 
-    const schedule = await Schedule.find().populate('todo','meeting');
+    const schedule = await Schedule.find().populate('Todo','meetings');
 
-    return res.status(200).json(schedule);
+    // return res.status(200).json(schedule);
 
-    // return res.render("./schedule/schedule", { schedule, todotitle: "Lista de Tareas", meettitle: "Lista de Reuniones"});
+    const scheduleContain = schedule[0];
+    
+    return res.render("./schedule/schedule", { scheduleContain });
 
   } catch (error) {
 

@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const scheduleSchema = new Schema(
     {
-        todo: [ { type: mongoose.Types.ObjectId, ref: 'Todo' } ],
-        meeting: [ { type: mongoose.Types.ObjectId, ref: 'Meeting' } ]
+        todo: [ { type: mongoose.Types.ObjectId, ref: 'todo' } ],
+        meeting: [ { type: mongoose.Types.ObjectId, ref: 'meetings' } ]
     },
     { timestamps: true }
 );
 
-const Schedule = mongoose.model('Schedule', scheduleSchema);
+const Schedule = mongoose.model('schedule', scheduleSchema);
 
 module.exports = Schedule;

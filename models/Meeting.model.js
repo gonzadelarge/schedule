@@ -11,6 +11,6 @@ const meetingSchema = new Schema(
     { timestamps: true }
 );  
 
-const Meeting = mongoose.model('Meeting', meetingSchema);
+const Meeting = mongoose.model('meetings', meetingSchema);
 
 module.exports = Meeting;

@@ -55,7 +55,7 @@ app.use("/", indexRoutes);
 app.use("/schedule", scheduleRoutes);
 app.use("/auth", authRoutes);
 app.use("/todo", todoRoutes);
-app.use("/meet", meetingRoutes);
+app.use("/meeting", meetingRoutes);
 app.use("/user", userRoutes);
 
 app.set('views', path.join(__dirname, 'views'));
