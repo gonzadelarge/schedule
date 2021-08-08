@@ -1,85 +1,53 @@
-const passport = require("passport");
+const passport = require('passport');
 
-const registerGet = (req, res) => {
-  return res.render("./auth/register");
-};
+const registerGet = (req, res, next) => {
 
-const registerPost = async (req, res, next) => {
-  console.log('Hola')
-  const done = (error, user) => {
-    console.log('Hola')
-    if (error) {
-      return next(error);
+    return res.json("Muy bien manin ,ven a registrarte");
+    //return res.render("./auth/register");
+}
+
+const registerPost = async (req, res, next) =>{
+    //recibe el parametro de la estrategia creada en el index de auth, en este caso register
+    const done = ( error, user) =>{
+        if(error){
+            return next(error)
+        }
+        console.log("Usuario registrado -->", user);
+        return res.json(user);//CHANGE BEFORE WORKS FINE
     }
+    passport.authenticate("register",done)(req);
+}
 
-    req.logIn(user, (error) => {
+const loginGet = (req, res, next) =>{
+    return res.json("Tas registrado manin?");
+}
 
-      console.log("Usuario registrado -> ", user);
+const loginPost = (req, res, next) =>{
+    const done = ( error, user) =>{
+        if(error){
+            return next(error);
+        }
+        req.logIn(user, (error)=>{
 
-      if (error) { 
-        console.log('Error 1',error);
-        return next(error);
-      }
-      console.log("Usuario registrado -> ", user);
+            if(error){
+                return next(error);
+            }
+            console.log("Usuario logueado", user);
+            return res.json(user);//CHANGE BEFORE WORKS FINE
+        })
+        
+    };
+    passport.authenticate("access", done)(req);
+}
 
-      return res.redirect("/schedule");
-    });
-  };
-
-  passport.authenticate("register-strategy", done)(req);
-};
-
-const loginGet = (req, res, next) => {
-  return res.render("./auth/login");
-};
-
-const loginPost = (req, res, next) => {
-  
-  const done = (error, user) => {
-
-    console.log("Usuario logueado -> ", user);
-    
-    if (error) {
-      return next(error);
-    }
-
-    /**
-     * Crea la sesión del usuario y la guarda en db.
-     */
-    req.logIn(user, (error) => {
-
-      console.log("Usuario logueado -> ", user);
-
-      if (error) {
-        return next(error);
-      }
-      console.log("Usuario logueado -> ", user);
-
-      return res.redirect("/schedule");
-    });
-  };
-
-  /**
-   * Intenta autenticar a un usuario según la estrategia
-   */
-  passport.authenticate("login-strategy", done)(req);
-};
-
-const logoutPost = (req, res, next) => {
-  if (req.user) {
+const logoutPost = (req, res, next) =>{
+    console.log("dentro de logout");
+    if(req.user){
     req.logout();
-
-    req.session.destroy(() => {
-      res.clearCookie("connect.sid");
-      return res.redirect("/");
+    req.session.destroy(() =>{
+        res.clearCookie("connect.sid");
+        return res.redirect("/");
     });
-  }
-};
-
-module.exports = {
-  registerGet,
-  registerPost,
-  loginGet,
-  loginPost,
-  logoutPost,
-};
+}
+}
+module.exports = {registerGet, registerPost, loginGet, loginPost, logoutPost };

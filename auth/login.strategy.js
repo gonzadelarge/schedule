@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 const loginStrategy = new LocalStrategy(
 
     {
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true,
+        usernameField:"email",
+        passwordField:"password",
+        passReqToCallback: true
     },
 
     async (req, email, pass, done) => {
