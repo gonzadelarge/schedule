@@ -2,8 +2,11 @@ const Todo = require('../models/Todo.model');
 
 const indexGet = async (req, res, next) => {
   try {
-    const todos = await Todo.find();
-    return res.json(todos);
+    const todo = await Todo.find();
+
+    return res.json(todo);
+    // return res.render("./schedule/todos", { todos, todotitle: "Lista de Tareas"});
+
   } catch (error) {
     console.log(error);
     return next(error);

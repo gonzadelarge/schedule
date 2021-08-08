@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <h1>Agenda App</h1>
+
+    <a href="/">Inicio</a>
+
+    <ul>
+        {{#each schedule}}
+            <li>
+                <h4><a href="/todos/{{_id}}">{{ name }}</a></h4>
+                <h4>{{date}}</h4>
+                <p>{{message}}</p>
+                <form action="/todos/{{_id}}?_method=DELETE" method="POST">
+                    <button type="submit">Eliminar ToDo</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+
+    {{!-- <h2>{{todotitle}}</h2>
+    <ul>
+        {{#each schedule.todos}}
+            <li>
+                <h4><a href="/todos/{{_id}}">{{ name }}</a></h4>
+                <h4>{{date}}</h4>
+                <p>{{message}}</p>
+                <form action="/todos/{{_id}}?_method=DELETE" method="POST">
+                    <button type="submit">Eliminar ToDo</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+
+    <h2>{{meettitle}}</h2>
+    <ul>
+        {{#each schedule.meeting}}
+            <li>
+                <h4><a href="/todos/{{_id}}">{{ name }}</a></h4>
+                <h4>{{date}}</h4>
+                <p>{{message}}</p>
+                <form action="/todos/{{_id}}?_method=DELETE" method="POST">
+                    <button type="submit">Eliminar ToDo</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul> --}}
+
+</body>
+</html>

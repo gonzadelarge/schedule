@@ -1,6 +1,10 @@
-const isAuth = (req, res, next) => req.isAuthenticated()
-    ? next() 
-    : res.status(401).json('[Código rojo!] No estás autorizado');
+const isAuth = (req, res, next) => {
+    if(req.isAuthenticated()) {
+      return next();
+    }
+    // Si no está autenticado redirige a login
+    return res.redirect('/auth/login');
+  };
 
 const isAdmin = (req, res, next) => {
     if(req.isAuthenticated()) {

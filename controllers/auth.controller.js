@@ -1,7 +1,7 @@
 const passport = require("passport");
 
 const registerGet = (req, res) => {
-  return res.redirect("./auth/register");
+  return res.render("./auth/register");
 };
 
 const registerPost = (req, res, next) => {
@@ -12,10 +12,12 @@ const registerPost = (req, res, next) => {
   };
 
   passport.authenticate("register", done)(req);
+  
+  return res.redirect("/schedule/schedule");
 };
 
 const loginGet = (req, res, next) => {
-  return res.redirect("./auth/login");
+  return res.render("./auth/login");
 };
 
 const loginPost = (req, res, next) => {
@@ -26,6 +28,8 @@ const loginPost = (req, res, next) => {
   };
 
   passport.authenticate("login", done)(req);
+
+  return res.redirect("/schedule/schedule");
 };
 
 const logoutPost = (req, res, next) => {

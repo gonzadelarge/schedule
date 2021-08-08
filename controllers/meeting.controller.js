@@ -3,7 +3,9 @@ const Meeting = require('../models/Meeting.model');
 const indexGet = async (req, res, next) => {
   try {
     const meeting = await Meeting.find();
-    return res.json(meeting);
+
+    return res.render("./schedule/schedule", { meeting, meettitle: "Lista de Reuniones"});
+
   } catch (error) {
     console.log(error);
     return next(error);
@@ -34,7 +36,7 @@ const editPost = async (req, res, next) => {
 
   try {
 
-      const { name, date, message, done } = req.body;
+      const { id, name, date, message, done } = req.body;
   
       const update = {};
 
