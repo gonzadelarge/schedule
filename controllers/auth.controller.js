@@ -4,16 +4,29 @@ const registerGet = (req, res) => {
   return res.render("./auth/register");
 };
 
-const registerPost = (req, res, next) => {
+const registerPost = async (req, res, next) => {
+  console.log('Hola')
   const done = (error, user) => {
-    if (error) return next(error);
+    console.log('Hola')
+    if (error) {
+      return next(error);
+    }
 
-    req.login(user, (error) => (error ? next(error) : res.redirect("/")));
+    req.logIn(user, (error) => {
+
+      console.log("Usuario registrado -> ", user);
+
+      if (error) { 
+        console.log('Error 1',error);
+        return next(error);
+      }
+      console.log("Usuario registrado -> ", user);
+
+      return res.redirect("/schedule");
+    });
   };
 
-  passport.authenticate("register", done)(req);
-  
-  return res.redirect("/schedule");
+  passport.authenticate("register-strategy", done)(req);
 };
 
 const loginGet = (req, res, next) => {
@@ -21,17 +34,35 @@ const loginGet = (req, res, next) => {
 };
 
 const loginPost = (req, res, next) => {
+  
   const done = (error, user) => {
-    if (error) return next(error);
 
-    console.log('Hola ---------- >')
+    console.log("Usuario logueado -> ", user);
+    
+    if (error) {
+      return next(error);
+    }
 
-    req.login(user, (error) => (error ? next(error) : res.redirect("/")));
+    /**
+     * Crea la sesión del usuario y la guarda en db.
+     */
+    req.logIn(user, (error) => {
+
+      console.log("Usuario logueado -> ", user);
+
+      if (error) {
+        return next(error);
+      }
+      console.log("Usuario logueado -> ", user);
+
+      return res.redirect("/schedule");
+    });
   };
 
-  passport.authenticate("login", done)(req);
-
-  return res.redirect("/");
+  /**
+   * Intenta autenticar a un usuario según la estrategia
+   */
+  passport.authenticate("login-strategy", done)(req);
 };
 
 const logoutPost = (req, res, next) => {
@@ -50,5 +81,5 @@ module.exports = {
   registerPost,
   loginGet,
   loginPost,
-  logoutPost
+  logoutPost,
 };

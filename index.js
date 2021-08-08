@@ -4,24 +4,12 @@ const path = require('path');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
 const cors = require('cors')
-
-
 const session = require('express-session');
-
 const dotenv = require("dotenv");
-dotenv.config();
-
-const db = require('./config/db.config');
-db.connect();
-
 const auth = require("./auth");
+const app = express();
+
 auth.useStrategies();
-
-const PORT = process.env.PORT || 4000
-
-let corsOptions = {
-    origin:`http://localhost:${PORT}`
-}
 
 const indexRoutes = require('./routes/index.routes');
 const authRoutes = require("./routes/auth.routes");
@@ -30,7 +18,17 @@ const todoRoutes = require("./routes/todo.routes");
 const meetingRoutes = require("./routes/meeting.routes");
 const userRoutes = require("./routes/user.routes");
 
-const app = express();
+const db = require('./config/db.config');
+db.connect();
+
+const PORT = process.env.PORT || 4000
+
+let corsOptions = {
+    origin:`http://localhost:${PORT}`
+}
+
+dotenv.config();
+
 app.use(cors(corsOptions))
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: 'Aa1!"+SDqwe11zx.!!23xco.dAss',
+    secret: 'PUAGH!"+SDqwe11zx.!!23xco.dAss',
     resave: false,
     saveUninitialized: false,
     cookie: {

@@ -46,7 +46,7 @@ const addPost = async (req, res, next) => {
 
   try {
 
-    const id = '610fff234a01001a2c374150';
+    const id = req.body.id || '610fff234a01001a2c374150';
     
     const todos = await Todo.find();
     const meetings = await Meeting.find();
@@ -69,17 +69,3 @@ const addPost = async (req, res, next) => {
 }
 
 module.exports = { indexGet, createPost, addPost }
-
-
-// const scheduleTodo = await Todo.find();
-// const scheduleMeet = await Meeting.find();
-
-// const auxSchedule = []
-
-// auxSchedule.push(scheduleTodo, scheduleMeet)
-
-// // return res.status(200).json(auxSchedule);
-
-// const scheduleContain = auxSchedule;
-// console.log(scheduleContain)
-// return res.render("./schedule/schedule", { scheduleContain });
