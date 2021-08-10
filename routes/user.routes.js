@@ -4,10 +4,10 @@ const {isAuth} = require('../middlewares/auth.middlewares');
 
 const router = express.Router();
 
-router.get('/', [isAuth], controller.indexGet);
+router.get('/', controller.indexGet);
 
-router.put('/edit', [isAuth], controller.editPost);
+router.put('/edit', controller.editPost);
 
-router.delete('/delete/:id', [isAuth], controller.deletePost);
+router.delete('/delete/:id', controller.deletePost);
 
 module.exports = router; 

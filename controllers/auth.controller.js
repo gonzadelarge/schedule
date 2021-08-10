@@ -2,8 +2,7 @@ const passport = require('passport');
 
 const registerGet = (req, res, next) => {
 
-    return res.json("Muy bien manin ,ven a registrarte");
-    //return res.render("./auth/register");
+    return res.render("./auth/register");
 }
 
 const registerPost = async (req, res, next) =>{
@@ -12,14 +11,14 @@ const registerPost = async (req, res, next) =>{
         if(error){
             return next(error)
         }
-        console.log("Usuario registrado -->", user);
-        return res.json(user);//CHANGE BEFORE WORKS FINE
+        console.log("Usuario registrado con éxito -->", user);
+        return res.redirect("/schedule");
     }
     passport.authenticate("register",done)(req);
 }
 
 const loginGet = (req, res, next) =>{
-    return res.json("Tas registrado manin?");
+    return res.render("./auth/login");
 }
 
 const loginPost = (req, res, next) =>{
@@ -32,8 +31,8 @@ const loginPost = (req, res, next) =>{
             if(error){
                 return next(error);
             }
-            console.log("Usuario logueado", user);
-            return res.json(user);//CHANGE BEFORE WORKS FINE
+            console.log("Usuario logueado con exito", user);
+            return res.redirect("/schedule");
         })
         
     };

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const scheduleSchema = new Schema(
     {
-        todo: [ { type: mongoose.Types.ObjectId, ref: 'todos' } ],
+        todo: [ { type: mongoose.Types.ObjectId, ref: 'Todo' } ],
         meeting: [ { type: mongoose.Types.ObjectId, ref: 'meetings' } ]
     },
     { timestamps: true }

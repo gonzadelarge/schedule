@@ -16,20 +16,32 @@
         <button type="submit">Actualizar Agenda</button>
     </form>
 
-    <a href="/todo">Tareas</a>
-    <ul>
+    <a href="/todo"><h2>Tareas</h2></a>
+    <div>
         {{#each scheduleContain.todo}}
-            <li>{{this}}</li>
+            <ul>
+                <li>{{this.name}}</li>
+                <li>{{this.date}}</li>
+                <li>{{this.message}}</li>
+                <li>{{this.done}}</li>
+            </ul>
+            <hr>
         {{/each}} 
-    </ul>
+    </div>
 
     
-    <a href="/meeting">Reuniones</a>
-    <ul>
+    <a href="/meeting"><h2>Reuniones</h2></a>
+    <div>
         {{#each scheduleContain.meeting}}
-            <li>{{this}}</li>
+            <ul>
+                <li>{{this.name}}</li>
+                <li>{{this.date}}</li>
+                <li>{{this.message}}</li>
+                <li>{{this.done}}</li>
+            </ul>
+            <hr>
         {{/each}} 
-    </ul>
+    </div>
     
 </body>
 </html>

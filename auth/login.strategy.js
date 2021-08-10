@@ -1,36 +1,39 @@
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/User.model');
+const User = require("../models/User.model");
 const bcrypt = require('bcrypt');
 
-const loginStrategy = new LocalStrategy(
+ const loginStrategy = new LocalStrategy(
+     {
+         usernameField:"email",
+         passwordField:"password",
+         passReqToCallback: true
+     }, 
+        async (req, email, password, done) => {
 
-    {
-        usernameField:"email",
-        passwordField:"password",
-        passReqToCallback: true
-    },
+            try{
+                //comprobaremos si el user existe en la base de datos 
+                //comprobaremos si la contraseña es igual a la de la base de datos
+                const existingUser = await User.findOne({ email });
+                
+                if(!existingUser){
+                    const error = new Error("El usuario no existe");
+                    error.status = 401;
+                    return done(error);
+                }
 
-    async (req, email, pass, done) => {
+                const isValidPassword = await bcrypt.compare(password, existingUser.password);
 
+                if(!isValidPassword){
+                    const error = new Error("La contraseña es incorrecta");
+                    return done(error);
+                }
 
-        try {
+                existingUser.password = undefined; //IMPORTANTE!!!!!!!!!!!
+                return done(null, existingUser);
 
-            const existingUser = await User.findOne({ email });
-            
-            console.log(existingUser)
+            }catch(error){
+                return done(error);
+            }
+        });
 
-            if (!existingUser) next(400, 'El usuario no existe', done);
-
-            const isValidPassword = await bcrypt.compare(pass, existingUser.password);
-
-            if (!isValidPassword) next(401, 'Las contraseñas no coicniden', done);
-
-            existingUser.password = undefined;
-            return done(null, existingUser);
-        } catch (error) {
-            return done(error);
-        }
-    }
-);
-
-module.exports = loginStrategy;
+        module.exports = loginStrategy;
