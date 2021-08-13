@@ -13,6 +13,23 @@ const indexGet = async (req, res, next) => {
   }
 };
 
+const oneGet = async (req, res, next) => {
+
+  const { id } = req.params;
+
+  try {
+
+    const todo = await Todo.findById(id);
+
+    return res.json(todo);
+    // return res.render("./schedule/todos", { todos, todotitle: "Lista de Tareas"});
+
+  } catch (error) {
+
+    return next(error);
+  }
+};
+
 const nameGet = async (req, res, next) => {
 
   const { name } = req.params;
@@ -77,7 +94,7 @@ const deletePost = async (req, res, next) => {
     if (!deleted) {
       return res.json("El elemento que querías borrar no existe");
     } else {
-      return res.redirect("/todo");
+      return res.redirect("/schedule");
     }
 
   } catch (error) {
@@ -85,4 +102,4 @@ const deletePost = async (req, res, next) => {
   }
 }
 
-module.exports = { indexGet, nameGet, createPost, editPost, deletePost }
+module.exports = { indexGet, nameGet, createPost, editPost, deletePost, oneGet }

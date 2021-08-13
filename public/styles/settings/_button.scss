@@ -1,0 +1,34 @@
+/* /////////////////////////    BOTON   //////////////////////////////  */
+
+.b-button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue-hard);
+    text-align: center;
+    box-shadow: 0 0 10px 0 var(--gray-hard);
+
+    &--amarillo {
+        background-color: var(--amarillo-hard);
+        &:hover {
+            color: var(--amarillo-hard);
+        }
+    }
+    &--rosa {
+        background-color: var(--rosa-hard);
+        color: var(--blanco-hard);
+        &:hover {
+            color: var(--rosa-hard);
+        }
+    }
+    &:hover {
+        background-color: var(--sky-hard);
+        color: var(--white-hard);
+
+        cursor: pointer;
+    }
+}

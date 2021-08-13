@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 app.use("/", indexRoutes);
 app.use("/schedule", scheduleRoutes);
 app.use("/auth", authRoutes);
-app.use("/todo", todoRoutes);
+app.use("/todos", todoRoutes);
 app.use("/meeting", meetingRoutes);
 app.use("/user", userRoutes);
 

@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', controller.indexGet);
 
+router.get('/todo/:id', controller.oneGet);
+
 router.get('/:name', controller.nameGet);
 
 router.post('/create', controller.createPost);

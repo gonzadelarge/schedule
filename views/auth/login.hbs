@@ -3,28 +3,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/index.css">
     <title>Login</title>
   </head>
   <body>
-    <h1>Login</h1>
-    <a href="/">Inicio</a>
-    <a href="/auth/register">Registrarse</a>
-    <form action="/auth/login" method="POST">
-
-      <label>
-        <p>Email</p>
-        <input type="text" name="email" />
-      </label>
-
-      <label>
-        <p>Contraseña</p>
-        <input type="password" name="password" />
-      </label>
-
-      <button type="submit">
-        Login
-      </button>
-    </form>
-
+    <div class="b-container bg-1">
+      <div class="fake-div"></div>
+      <div class="b-header bg-n">
+        <div class="b-header__logo">
+            <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+        </div>
+        <div class="b-header__links"></div>
+      </div>
+      <div class="c-form">
+        <div class="c-form__links">
+          <h1 class="c-form__title">Log In</h1>
+          <a class="c-form__link" href="/auth/register">O create una cuenta</a>
+        </div>
+        <form class="b-form" action="/auth/login" method="POST">
+            <div class="b-form__inputBox"><input class="b-form__input" type="text" name="email" placeholder="Email"/></div>
+            <div class="b-form__inputBox"><input class="b-form__input" type="password" name="password" placeholder="Password"/></div>
+            <div class="b-form__inputBox"><input class="b-form__input b-button" type="submit"></div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

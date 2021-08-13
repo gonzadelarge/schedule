@@ -1,0 +1,21 @@
+.fake-div {
+    width: 100%;
+    height: 10vh;
+    background: none;
+
+    @media (min-width:560px) {
+        display: none;
+    }
+}
+
+.bg-n {
+    background: none;
+}
+
+.bg-1 {
+    background: linear-gradient(40deg, var(--orange-hard), var(--sky-hard));
+}
+
+.bg-2 {
+    background: linear-gradient(165deg, var(--white-hard), var(--grey-soft));
+}

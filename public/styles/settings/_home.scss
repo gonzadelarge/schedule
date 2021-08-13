@@ -1,0 +1,59 @@
+.b-home {
+    position: relative;
+    width: 100%;
+    height: 84vh;
+    overflow: hidden;
+    
+    &__titleContain {
+        position: absolute;
+        top: 96%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 20vh;
+        z-index: 1;
+    }
+
+    &__title {
+        text-align: center;
+        margin: 20px 0;
+        color: var(--dark-hard);
+        font-size: 18px;
+        font-weight: 200;
+        font-style: italic;
+    }
+
+    &__imageContain {
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        height: 50vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 600px) {
+            width: 80%;
+        }
+
+        @media (min-width: 750px) {
+            width: 60%;
+        }
+
+        @media (min-width: 950px) {
+            width: 45%;
+        }
+
+        @media (min-width: 1200px) {
+            width: 40%;
+        }
+    }
+
+    &__image {
+        width: 80%;
+        margin-right: 10%;
+    }
+}

@@ -1,0 +1,17 @@
+.b-footer {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(135deg, var(--pink-hard), var(--blue-hard));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+        margin-top: 2px;
+        font-size: 15px;
+        font-weight: 200;
+        color: var(--white-hard);
+
+    }
+ }

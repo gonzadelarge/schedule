@@ -1,0 +1,15 @@
+.b-card {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--orange-soft);
+
+    @media(min-width: 580px) {
+        width: 48%;
+    }
+
+    @media(min-width: 780px) {
+        width: 32%;
+    }
+}

@@ -1,0 +1,27 @@
+.b-controls {
+    width: 90%;
+    height: 10vh;
+    margin: 40px auto;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__input {
+        width: 40%;
+        margin-right: 20px;
+    }
+
+    &__button {
+        width: 20%;
+
+        @media (min-width: 860px) {
+            width: 10%;
+        }
+        
+        & input {
+            background-color: var(--orange-hard);
+            color: var(--white-hard);
+        }
+    }
+}
