@@ -60,8 +60,8 @@ app.use("/", indexRoutes);
 app.use("/schedule", scheduleRoutes);
 app.use("/auth", authRoutes);
 app.use("/todos", todoRoutes);
-app.use("/meeting", meetingRoutes);
-app.use("/user", userRoutes);
+app.use("/meetings", meetingRoutes);
+app.use("/users", userRoutes);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

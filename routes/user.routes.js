@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', controller.indexGet);
 
+router.get('/user/:id', controller.userGet);
+
 router.put('/edit', controller.editPost);
 
 router.delete('/delete/:id', controller.deletePost);

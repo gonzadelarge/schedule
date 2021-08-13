@@ -1,11 +1,27 @@
 const User = require('../models/User.model');
 
 const indexGet = async (req, res, next) => {
+
   try {
     const user = await User.find();
     return res.json(user);
+
   } catch (error) {
-    console.log(error);
+
+    return next(error);
+  }
+};
+
+const userGet = async (req, res, next) => {
+
+  const { id, name } = req.user
+
+  try {
+    const user = await User.findById(id);
+    return res.json(user);
+
+  } catch (error) {
+
     return next(error);
   }
 };
@@ -48,4 +64,4 @@ const deletePost = async (req, res, next) => {
     }
   }
 
-module.exports = { indexGet, editPost, deletePost }
+module.exports = { indexGet, userGet, editPost, deletePost }

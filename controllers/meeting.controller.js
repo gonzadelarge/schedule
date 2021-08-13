@@ -4,8 +4,9 @@ const indexGet = async (req, res, next) => {
   try {
     const meeting = await Meeting.find();
 
-    return res.json(meeting)
-    return res.render("./schedule/schedule", { meeting, meettitle: "Lista de Reuniones"});
+
+    return res.render( "./schedule/meetings", { meeting, title: 'Lista de Reuniones', isAuthenticated: req.isAuthenticated(), user: req.user });
+    // return res.json(meeting)
 
   } catch (error) {
 
@@ -36,17 +37,17 @@ const editPost = async (req, res, next) => {
   try {
 
       const { id, name, date, message, done } = req.body;
-  
+
       const update = {};
 
       if (name) update.name = name;
       if (date) update.date = date;
       if (message) update.message = message;
       if (typeof done === "boolean") update.done = done;
-  
+
       const updateMeeting = await Meeting.findByIdAndUpdate(id, update, { new: true });
       return res.json(updateMeeting);
-      
+
     } catch (error) {
       return next(error);
     }

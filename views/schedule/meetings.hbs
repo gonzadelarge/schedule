@@ -32,43 +32,23 @@
               <div class="b-form__inputBox b-controls__button"><input class="b-form__input b-button" type="submit" value="Refresh"></div>
         </form>
         <div class="b-schedule">
-            <h2 class="b-schedule__link">Tareas</h2>
+            <h2 class="b-schedule__link">Reuniones</h2>
             <div class="b-schedule__cards">
-                {{#each scheduleContain.todo}}
+                {{#each meeting}}
                     <ul class="b-card bg-3">
-                        <a class="b-card__container" href="todos/todo/{{this.id}}">
+                        <a class="b-card__container" href="todos/todo/{{id}}">
                             <div class="b-card__heading">
-                                <li class="b-card__title">{{this.name}}</li>
-                                {{#if this.done}}<li class="b-card__check">Sí</li>{{/if}}
-                                {{#if this.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
+                                <li class="b-card__title">{{name}}</li>
+                                {{#if done}}<li class="b-card__check">Sí</li>{{/if}}
+                                {{#if done}} {{else}}<li class="b-card__check">No</li>{{/if}}
                             </div>
                             <div class="b-card__block">
-                                <li class="b-card__date">{{this.date}}</li>
-                                <li class="b-card__text">{{this.message}}</li>
+                                <li class="b-card__date">{{date}}</li>
+                                <li class="b-card__text">{{message}}</li>
                             </div>
                         </a>
                     </ul>
                 {{/each}} 
-            </div>
-        </div>
-        <div class="b-schedule">
-            <h2 class="b-schedule__link">Reuniones</h2>
-            <div class="b-schedule__cards">
-                {{#each scheduleContain.meeting}}
-                    <ul id="card" class="b-card bg-3">
-                        <a class="b-card__container" href="meeting/meet/{{this.id}}">
-                            <div class="b-card__heading">
-                                <li class="b-card__title">{{this.name}}</li>
-                                {{#if this.done}}<li class="b-card__check">Sí</li>{{/if}}
-                                {{#if this.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
-                            </div>
-                            <div class="b-card__block">
-                                <li class="b-card__date">{{this.date}}</li>
-                                <li class="b-card__text">{{this.message}}</li>
-                            </div>
-                        </a>
-                    </ul>
-                {{/each}}
             </div>
         </div>
         <div class="b-footer">

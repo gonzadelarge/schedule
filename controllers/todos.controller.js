@@ -4,8 +4,8 @@ const indexGet = async (req, res, next) => {
   try {
     const todo = await Todo.find();
 
-    return res.json(todo);
-    // return res.render("./schedule/todos", { todos, todotitle: "Lista de Tareas"});
+    return res.render( "./schedule/todos", { todo, title: 'Lista de Tareas', isAuthenticated: req.isAuthenticated(), user: req.user });
+    // return res.json(todo);
 
   } catch (error) {
 

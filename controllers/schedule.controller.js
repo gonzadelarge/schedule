@@ -21,8 +21,7 @@ const indexGet = async (req, res, next) => {
   
     const scheduleContain = schedule[0];
 
-    return res.render("./schedule/schedule", { scheduleContain });
-    return res.json(scheduleContain)
+    return res.render("./schedule/schedule", { scheduleContain, isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
 
