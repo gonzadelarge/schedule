@@ -29,31 +29,26 @@
                 </form>
             </div>
         </div>
-        <form class="b-controls" action="/schedule/add?_method=PUT" method="POST">
-            <div class="b-form__inputBox b-controls__input"><input class="b-form__input" type="text" name="filter" placeholder="Filter"/></div>
-            <div class="b-form__inputBox b-controls__button"><input class="b-form__input b-button" type="submit" value="Refresh"></div>
-        </form>
         <div class="b-schedule">
-            <div class="b-schedule__controls">
-                <h2 class="b-schedule__link">Reuniones</h2>
-                <a href="meetings/create">Nueva Reunión</a>    
-            </div>
+            <h2 class="b-schedule__link">Reunión</h2>
             <div class="b-schedule__cards">
-                {{#each meeting}}
-                    <ul class="b-card bg-3">
-                        <a class="b-card__container" href="meetings/meet/{{id}}">
-                            <div class="b-card__heading">
-                                <li class="b-card__title">{{name}}</li>
-                                {{#if done}}<li class="b-card__check">Sí</li>{{/if}}
-                                {{#if done}} {{else}}<li class="b-card__check">No</li>{{/if}}
-                            </div>
-                            <div class="b-card__block">
-                                <li class="b-card__date">{{date}}</li>
-                                <li class="b-card__text">{{message}}</li>
-                            </div>
-                        </a>
-                    </ul>
-                {{/each}} 
+                <ul class="b-card bg-3">
+                    <a class="b-card__container">
+                        <div class="b-card__heading">
+                            <li class="b-card__title">{{meet.name}}</li>
+                            {{#if meet.done}}<li class="b-card__check">Sí</li>{{/if}}
+                            {{#if meet.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
+                        </div>
+                        <div class="b-card__block">
+                            <li class="b-card__date">{{meet.date}}</li>
+                            <li class="b-card__text">{{meet.message}}</li>
+                        </div>
+                    </a>
+                </ul>
+                <div class="b-schedule__buttons">
+                    <form class="b-schedule__form" action="delete/{{meet.id}}?_method=DELETE" method="POST"><button type="submit" class="b-button">Borrar</button></form>
+                    <a href="/meetings/edit/{{meet.id}}" class="b-button b-schedule__button">Editar</a>
+                </div>
             </div>
         </div>
         <div class="b-footer">

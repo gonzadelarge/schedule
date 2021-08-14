@@ -21,8 +21,7 @@ const oneGet = async (req, res, next) => {
 
     const todo = await Todo.findById(id);
 
-    return res.json(todo);
-    // return res.render("./schedule/todos", { todos, todotitle: "Lista de Tareas"});
+    return res.render( "./schedule/todo", { todo, title: 'Tarea', isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
 

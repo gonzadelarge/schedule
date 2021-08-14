@@ -21,9 +21,13 @@
 }
 
 .bg-3 {
-    background: linear-gradient(110deg, var(--violet-soft), var(--orange-soft));
+    background: linear-gradient(210deg, var(--violet-soft), var(--orange-soft));
 }
 
 .bg-4 {
     background: linear-gradient(210deg, var(--yellow-soft), var(--sky-soft));
+}
+
+.bg-5 {
+    background: linear-gradient(325deg, var(--sky-hard), var(--violet-medium));
 }

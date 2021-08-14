@@ -14,6 +14,26 @@ const indexGet = async (req, res, next) => {
   }
 };
 
+const oneGet = async (req, res, next) => {
+
+  const { id } = req.params;
+
+  try {
+
+    const meet = await Meeting.findById(id);
+
+    return res.render( "./schedule/meet", { meet, title: 'Reunión', isAuthenticated: req.isAuthenticated(), user: req.user });
+
+  } catch (error) {
+
+    return next(error);
+  }
+};
+
+const createGet = (req, res, next) =>{
+  return res.render("./schedule/new-meet");
+}
+
 const createPost = async (req, res, next) => {
 
   const { name, date, message, done } = req.body;
@@ -29,8 +49,17 @@ const createPost = async (req, res, next) => {
 
   const meeting = await newMeeting.save();
 
-  return res.json(meeting);
+  return res.redirect("/meetings");
 };
+
+const editGet = (req, res, next) =>{
+
+  const { id, name, date, message, done } = req.params;
+  
+  const meet = {id, name, date, message, done};
+
+  return res.render("./schedule/edit-meet", {meet, title: 'Editar reunión', isAuthenticated: req.isAuthenticated(), user: req.user});
+}
 
 const editPost = async (req, res, next) => {
 
@@ -63,7 +92,7 @@ const deletePost = async (req, res, next) => {
     if (!deleted) {
       return res.json("El elemento que querías borrar no existe");
     } else {
-      return res.redirect("/meet");
+      return res.redirect("/meetings");
     }
 
   } catch (error) {
@@ -71,4 +100,12 @@ const deletePost = async (req, res, next) => {
   }
 }
 
-module.exports = { indexGet, createPost, editPost, deletePost }
+module.exports = { 
+    indexGet, 
+    oneGet, 
+    createPost, 
+    createGet, 
+    editGet,
+    editPost, 
+    deletePost 
+  }

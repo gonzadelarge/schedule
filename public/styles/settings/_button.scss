@@ -11,20 +11,8 @@
     color: var(--blue-hard);
     text-align: center;
     box-shadow: 0 0 10px 0 var(--gray-hard);
+    font-size: 14px;
 
-    &--amarillo {
-        background-color: var(--amarillo-hard);
-        &:hover {
-            color: var(--amarillo-hard);
-        }
-    }
-    &--rosa {
-        background-color: var(--rosa-hard);
-        color: var(--blanco-hard);
-        &:hover {
-            color: var(--rosa-hard);
-        }
-    }
     &:hover {
         background-color: var(--sky-hard);
         color: var(--white-hard);

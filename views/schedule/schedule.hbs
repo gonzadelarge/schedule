@@ -12,10 +12,12 @@
 <body>
     <div class="b-container bg-2">
        <div class="fake-div"></div>
-       <div id="menu" class="b-header">
-           <div id="btn-menu" class="b-header__icon"></div>
-            <div class="b-header__logo">
-                <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+       <div id="menu" class="b-header bg-5">
+           <div class="b-header__controls">
+                <div id="btn-menu" class="b-header__icon"></div>
+                <div class="b-header__logo">
+                    <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+                </div>
             </div>
             <div class="b-header__links">
                 <a class="b-header__link" href="/schedule">Schedule</a>
@@ -56,7 +58,7 @@
             <div class="b-schedule__cards">
                 {{#each scheduleContain.meeting}}
                     <ul id="card" class="b-card bg-3">
-                        <a class="b-card__container" href="meeting/meet/{{this.id}}">
+                        <a class="b-card__container" href="meetings/meet/{{this.id}}">
                             <div class="b-card__heading">
                                 <li class="b-card__title">{{this.name}}</li>
                                 {{#if this.done}}<li class="b-card__check">Sí</li>{{/if}}

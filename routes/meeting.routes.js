@@ -7,10 +7,16 @@ const router = express.Router();
 
 router.get('/', controller.indexGet);
 
+router.get('/meet/:id', controller.oneGet);
+
+router.get('/create', controller.createGet);
+
 router.post('/create', controller.createPost);
 
-router.put('/edit', controller.editPost);
+router.get('/edit/:id', controller.editGet);
 
-router.delete('/delete/:id', controller.deletePost);
+router.put('/edit/', controller.editPost);
+
+router.delete('/meet/delete/:id', controller.deletePost);
 
 module.exports = router;

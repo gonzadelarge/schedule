@@ -18,7 +18,7 @@ const userGet = async (req, res, next) => {
 
   try {
     const user = await User.findById(id);
-    return res.json(user);
+    return res.render( "./user", { user, title: req.user, isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
 

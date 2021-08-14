@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/js/index.js"></script>
+    <title>{{user.name}}</title>
+</head>
+
+<body>
+    <div class="b-container bg-2">
+       <div class="fake-div"></div>
+       <div id="menu" class="b-header bg-1">
+           <div class="b-header__controls">
+                <div id="btn-menu" class="b-header__icon"></div>
+                <div class="b-header__logo">
+                    <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+                </div>
+            </div>
+            <div class="b-header__links">
+                <a class="b-header__link" href="/schedule">Schedule</a>
+                <a class="b-header__link" href="/todos">Todos</a>
+                <a class="b-header__link" href="/meetings">Meets</a>
+                <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
+                <form class="b-header__form" action="/auth/logout" method="POST">
+                    <button class="b-header__button" type="submit">Out</button>
+                </form>
+            </div>
+        </div>
+        <div class="b-schedule">
+            <h2 class="b-schedule__link">Datos de usuario</h2>
+            <div class="b-user">
+                <ul class="b-user__profile">
+                    <div class="b-user__heading">
+                        <li class="b-user__image"><img src="{{user.avatar}}" alt=""></li>
+                    </div>
+                    <div class="b-user__block">
+                        <div class="b-user__text">
+                            <li class="b-user__title">{{user.name}}</li>
+                            <li class="b-user__title">{{user.name}}</li>
+                            <li class="b-user__email">{{user.email}}</li>
+                            <li class="b-user__age">{{user.email}}</li>
+                        </div>
+                    </div>
+                </ul>
+                <form class="b-user__form" action="/auth/register" method="POST">
+                    <h3 class="b-user__head">Edita tu datos</h3>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Name"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="username" placeholder="Nick"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="email" placeholder="Email"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="password" name="password" placeholder="Password"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="date" name="age" placeholder="Edad"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="file" name="image" placeholder="Imagen"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input b-button" type="submit"></div>
+                </form>
+            </div>
+        </div>
+        <div class="b-footer">
+            <p class="b-footer__text">All rights reserved</p>
+        </div>
+    </div>
+</body>
+</html>

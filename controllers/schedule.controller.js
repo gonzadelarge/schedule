@@ -18,7 +18,7 @@ const indexGet = async (req, res, next) => {
         }
       )
 
-  
+        
     const scheduleContain = schedule[0];
 
     return res.render("./schedule/schedule", { scheduleContain, isAuthenticated: req.isAuthenticated(), user: req.user });
@@ -68,7 +68,8 @@ const addPost = async (req, res, next) => {
       { new: true }
     );
 
-    return res.status(200).render("./schedule/schedule", { scheduleContain });
+    return res.redirect("/schedule")
+    // return res.status(200).render("./schedule/schedule", { scheduleContain });
 
   } catch (err) {
 

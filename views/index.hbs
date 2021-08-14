@@ -10,17 +10,19 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    
    <div class="b-container">
        <div class="fake-div"></div>
-        <div id="menu" class="b-header">
-            <div id="btn-menu" class="b-header__icon"></div>
-            <div class="b-header__logo">
-                <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+        <div id="menu" class="b-header bg-5">
+            <div class="b-header__controls">
+                <div id="btn-menu" class="b-header__icon"></div>
+                <div class="b-header__logo">
+                    <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
+                </div>
             </div>
             <div class="b-header__links">
                 {{#if isAuthenticated}}
                     <a class="b-header__link" href="/schedule">Agenda</a>
+                    <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                     <form class="b-header__form" action="/auth/logout" method="POST">
                         <button class="b-header__button" type="submit">Logout</button>
                     </form>
@@ -54,10 +56,6 @@
         <div class="b-footer">
             <p class="b-footer__text">All rights reserved</p>
         </div>
-       
    </div>
-
-    
-    
 </body>
 </html>
