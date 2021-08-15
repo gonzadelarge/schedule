@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url(c:\Users\34617\Desktop\DESARROLLO\UPGRADE\NODE\PROYECTO\schedule_server\assets\icomoon\style.css);
 :root {
   --sky-hard: #a7a2f7;
   --blue-hard: #5a4fef;
@@ -20,7 +19,7 @@
   --yellow-medium: #efec4fce;
   --grey-medium: #eeeeeed7;
   --gray-medium: #bdbdbdc9;
-  --white-medium: #ffffffc0;
+  --white-medium: #ffffffab;
   --sky-soft: #a8a2f7a4;
   --blue-soft: #5a4fef;
   --violet-soft: #661d967a;
@@ -81,7 +80,6 @@
 .b-card__heading {
   width: 100%;
   height: 30px;
-  padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,11 +91,30 @@
           align-items: center;
 }
 
+.b-card__titleContain {
+  width: 80%;
+  height: 30px;
+  overflow: hidden;
+}
+
 .b-card__title {
   text-transform: capitalize;
   font-size: 18px;
   font-weight: 600;
   color: var(--white-hard);
+}
+
+.b-card__checkContain {
+  width: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .b-card__check {
@@ -239,10 +256,8 @@
   position: fixed;
   top: 30px;
   right: 30px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: var(--yellow-hard);
+  font-size: 28px;
+  color: var(--dark-hard);
 }
 
 @media (min-width: 560px) {
@@ -338,8 +353,10 @@
   color: var(--white-hard);
 }
 
-.active {
-  left: 0;
+@media (min-width: 560px) {
+  #btn-menu {
+    display: none;
+  }
 }
 
 .b-home {
@@ -537,6 +554,110 @@
   margin: 10px 0;
 }
 
+.b-modal {
+  position: fixed;
+  top: 30%;
+  left: -1500px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.b-modal__block {
+  position: relative;
+  width: 90%;
+  height: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--white-hard);
+  -webkit-box-shadow: 0 0 20px 0 var(--gray-hard);
+          box-shadow: 0 0 20px 0 var(--gray-hard);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+@media (min-width: 560px) {
+  .b-modal__block {
+    width: 80%;
+  }
+}
+
+@media (min-width: 760px) {
+  .b-modal__block {
+    width: 60%;
+  }
+}
+
+@media (min-width: 960px) {
+  .b-modal__block {
+    width: 40%;
+  }
+}
+
+.b-modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--violet-medium);
+  cursor: pointer;
+}
+
+.b-modal__heading {
+  position: absolute;
+  top: 35px;
+  left: 10%;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.b-modal__title {
+  color: var(--dark-hard);
+  font-size: 22px;
+}
+
+.b-modal__text {
+  margin: 10px 0;
+  color: var(--violet-hard);
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.b-modal__buttons {
+  width: 75%;
+}
+
+.b-modal__button {
+  margin: 10px 0;
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -569,7 +690,7 @@ html, body, input, select, textarea, button {
   width: 100%;
   height: 80vh;
   padding: 4% 0;
-  padding-top: 140px;
+  padding-top: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -587,7 +708,7 @@ html, body, input, select, textarea, button {
 
 @media (min-width: 560px) {
   .c-form {
-    padding-top: 70px;
+    padding-top: 90px;
   }
 }
 
@@ -660,6 +781,12 @@ html, body, input, select, textarea, button {
   .b-form {
     width: 35%;
   }
+}
+
+.b-form:hover {
+  background-color: var(--white-medium);
+  -webkit-box-shadow: 0 0 5px 0 var(--white-soft);
+          box-shadow: 0 0 5px 0 var(--white-soft);
 }
 
 .b-form__inputBox {
@@ -845,6 +972,14 @@ html, body, input, select, textarea, button {
   .fake-div {
     display: none;
   }
+}
+
+.d-none {
+  display: none;
+}
+
+.active {
+  left: 0;
 }
 
 .bg-n {

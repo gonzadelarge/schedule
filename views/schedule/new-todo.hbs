@@ -31,12 +31,15 @@
             </div>
         </div>
         <div class="b-schedule">
-            <h2 class="b-schedule__link">Datos de reunión</h2>
+            <div class="b-schedule__controls">
+                <h2 class="b-schedule__link">Datos de la tarea</h2>
+                <a href="/todos">Volver</a>    
+            </div>  
             <div class="b-user">
-                <form class="b-user__form" action="/meetings/create" method="POST">
-                    <h3 class="b-user__head">Crea tu reunión</h3>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Nombre de la reunión"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" placeholder="Fecha de la reunión"/></div>
+                <form class="b-user__form" action="/todos/create" method="POST">
+                    <h3 class="b-user__head">Crea tu tarea</h3>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Nombre de la tarea"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" placeholder="Fecha de la tarea"/></div>
                     <div class="b-form__inputBox"><select class="b-form__input" name="done" id="done">
                         <option value="true">Terminado</option>
                         <option value="false">Por hacer</option>

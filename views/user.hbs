@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/0f65edafbd.js" crossorigin="anonymous"></script>
     <title>{{user.name}}</title>
 </head>
 
@@ -14,7 +15,7 @@
        <div class="fake-div"></div>
        <div id="menu" class="b-header bg-1">
            <div class="b-header__controls">
-                <div id="btn-menu" class="b-header__icon"></div>
+                <div id="btn-menu" class="fas fa-bars b-header__icon"></div>
                 <div class="b-header__logo">
                     <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
                 </div>
@@ -25,7 +26,7 @@
                 <a class="b-header__link" href="/meetings">Meets</a>
                 <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                 <form class="b-header__form" action="/auth/logout" method="POST">
-                    <button class="b-header__button" type="submit">Out</button>
+                    <button class="b-header__button" type="submit"><i class="fas fa-user-alt-slash"></i></button>
                 </form>
             </div>
         </div>

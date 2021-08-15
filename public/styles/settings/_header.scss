@@ -59,10 +59,8 @@
       top: 30px;
       right: 30px;
 
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: var(--yellow-hard);
+      font-size: 28px;
+      color: var(--dark-hard);
 
       @media (min-width: 560px) {
          display: none;
@@ -151,6 +149,8 @@
    }
 }
 
-.active {
-   left: 0;
+#btn-menu {
+   @media (min-width: 560px) {
+      display: none;
+   }
 }

@@ -45,6 +45,9 @@ const nameGet = async (req, res, next) => {
   }
 };
 
+const createGet = (req, res, next) => {
+  return res.render("./schedule/new-todo");
+}
 
 const createPost = async (req, res, next) => {
 
@@ -59,8 +62,26 @@ const createPost = async (req, res, next) => {
 
   const todo = await newTodo.save();
 
-  return res.json(todo);
+  return res.redirect("/todos");
 };
+
+const editGet = async (req, res, next) =>{
+
+  const { id } = req.params;
+  
+  try {
+
+    const todo = await Todo.findById(id);
+    
+    return res.render("./schedule/edit-todo", {todo, title: 'Editar tarea', isAuthenticated: req.isAuthenticated(), user: req.user});
+
+  } catch (error) {
+
+    return next(error);
+  }
+
+  
+}
 
 const editPost = async (req, res, next) => {
 
@@ -73,10 +94,11 @@ const editPost = async (req, res, next) => {
       if (name) update.name = name;
       if (date) update.date = date;
       if (message) update.message = message;
-      if (typeof done === "boolean") update.done = done;
+      if (done) update.done = done;
   
       const updateTodo = await Todo.findByIdAndUpdate(id, update, { new: true });
-      return res.json(updateTodo);
+
+      return res.redirect("/todos");
       
     } catch (error) {
       return next(error);
@@ -93,7 +115,7 @@ const deletePost = async (req, res, next) => {
     if (!deleted) {
       return res.json("El elemento que querías borrar no existe");
     } else {
-      return res.redirect("/schedule");
+      return res.redirect("/todos");
     }
 
   } catch (error) {
@@ -101,4 +123,4 @@ const deletePost = async (req, res, next) => {
   }
 }
 
-module.exports = { indexGet, nameGet, createPost, editPost, deletePost, oneGet }
+module.exports = { indexGet, nameGet, createGet, createPost, editGet, editPost, deletePost, oneGet }

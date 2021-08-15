@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/0f65edafbd.js" crossorigin="anonymous"></script>
     <title>{{title}}</title>
 </head>
 
@@ -14,7 +15,7 @@
        <div class="fake-div"></div>
        <div id="menu" class="b-header bg-5">
            <div class="b-header__controls">
-                <div id="btn-menu" class="b-header__icon"></div>
+                <div id="btn-menu" class="fas fa-bars b-header__icon"></div>
                 <div class="b-header__logo">
                     <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
                 </div>
@@ -25,8 +26,21 @@
                 <a class="b-header__link" href="/meetings">Meets</a>
                 <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                 <form class="b-header__form" action="/auth/logout" method="POST">
-                    <button class="b-header__button" type="submit">Out</button>
+                    <button class="b-header__button" type="submit"><i class="fas fa-user-alt-slash"></i></button>
                 </form>
+            </div>
+        </div>
+        <div class="b-modal">
+            <div class="b-modal__block">
+                <div class="b-modal__close"></div>
+                <div class="b-modal__heading">
+                    <h3 class="b-modal__title">¿Lo tienes claro?</h3>
+                    <p class="b-modal__text">Esta acción no puede deshacerse</p>
+                </div>
+                <div class="b-modal__buttons">
+                    <button id="btn-detele" class="b-button b-modal__button">Si</button>
+                    <button id="btn-save" class="b-button b-modal__button">No</button>
+                </div>
             </div>
         </div>
         <div class="b-schedule">
@@ -35,9 +49,9 @@
                 <ul class="b-card bg-3">
                     <a class="b-card__container">
                         <div class="b-card__heading">
-                            <li class="b-card__title">{{meet.name}}</li>
-                            {{#if meet.done}}<li class="b-card__check">Sí</li>{{/if}}
-                            {{#if meet.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
+                            <div class="b-card__titleContain"><li class="b-card__title">{{meet.name}}</li></div>
+                            {{#if meet.done}}<div class="b-card__checkContain"><li class="b-card__check">Sí</li></div>{{/if}}
+                            {{#if meet.done}} {{else}}<div class="b-card__checkContain"><li class="b-card__check">No</li></div>{{/if}}
                         </div>
                         <div class="b-card__block">
                             <li class="b-card__date">{{meet.date}}</li>
@@ -46,7 +60,7 @@
                     </a>
                 </ul>
                 <div class="b-schedule__buttons">
-                    <form class="b-schedule__form" action="delete/{{meet.id}}?_method=DELETE" method="POST"><button type="submit" class="b-button">Borrar</button></form>
+                    <form id="delete-form" class="b-schedule__form" action="delete/{{meet.id}}?_method=DELETE" method="POST"><button type="submit" class="b-button">Borrar</button></form>
                     <a href="/meetings/edit/{{meet.id}}" class="b-button b-schedule__button">Editar</a>
                 </div>
             </div>

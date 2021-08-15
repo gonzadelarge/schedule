@@ -8,12 +8,16 @@ router.get('/', controller.indexGet);
 
 router.get('/todo/:id', controller.oneGet);
 
-router.get('/:name', controller.nameGet);
+router.get('/create', controller.createGet);
 
 router.post('/create', controller.createPost);
 
+router.get('/edit/:id', controller.editGet);
+
 router.put('/edit', controller.editPost);
 
-router.delete('/delete/:id', controller.deletePost);
+router.delete('/todo/delete/:id', controller.deletePost);
+
+// router.get('/filter/:name', controller.nameGet);
 
 module.exports = router;

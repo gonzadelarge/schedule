@@ -69,7 +69,6 @@ const addPost = async (req, res, next) => {
     );
 
     return res.redirect("/schedule")
-    // return res.status(200).render("./schedule/schedule", { scheduleContain });
 
   } catch (err) {
 

@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/js/index.js"></script>
     <script src="https://kit.fontawesome.com/0f65edafbd.js" crossorigin="anonymous"></script>
-    <title>{{user.name}}</title>
+    <title>{{title}}</title>
 </head>
-
 <body>
     <div class="b-container bg-2">
        <div class="fake-div"></div>
@@ -31,18 +30,21 @@
             </div>
         </div>
         <div class="b-schedule">
-            <h2 class="b-schedule__link">Datos de reunión</h2>
+            <h2 class="b-schedule__link">Datos de la tarea</h2>
+            <a href="/todos/todo/{{todo.id}}">Volver</a>
             <div class="b-user">
-                <form class="b-user__form" action="/meetings/create" method="POST">
-                    <h3 class="b-user__head">Crea tu reunión</h3>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Nombre de la reunión"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" placeholder="Fecha de la reunión"/></div>
+                <form class="b-user__form" action="/todos/edit?_method=PUT" method="POST">
+                    <h3 class="b-user__head">Edita tu reunión</h3>
+                    <div class="b-form__inputBox d-none"><input class="b-form__input" readonly type="text" name="id" value="{{todo.id}}"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" value="{{todo.name}}"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" value="{{todo.date}}"/></div>
+                    <div class="b-form__inputBox"><textarea class="b-form__input" name="message" placeholder="{{todo.message}}" cols="30" rows="10"></textarea></div>
                     <div class="b-form__inputBox"><select class="b-form__input" name="done" id="done">
-                        <option value="true">Terminado</option>
+                        <option value="" selected disabled hidden>¿Lo has hecho?</option>
                         <option value="false">Por hacer</option>
+                        <option value="true">Terminado</option>
                     </select>
                     </div>
-                    <div class="b-form__inputBox"><textarea class="b-form__input" name="message" placeholder="Da una breve descripción" cols="30" rows="10"></textarea></div>
                     <div class="b-form__inputBox"><input class="b-form__input b-button" type="submit"></div>
                 </form>
             </div>

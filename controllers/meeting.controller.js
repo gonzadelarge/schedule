@@ -52,13 +52,22 @@ const createPost = async (req, res, next) => {
   return res.redirect("/meetings");
 };
 
-const editGet = (req, res, next) =>{
+const editGet = async (req, res, next) =>{
 
-  const { id, name, date, message, done } = req.params;
+  const { id } = req.params;
   
-  const meet = {id, name, date, message, done};
+  try {
 
-  return res.render("./schedule/edit-meet", {meet, title: 'Editar reunión', isAuthenticated: req.isAuthenticated(), user: req.user});
+    const meet = await Meeting.findById(id);
+    
+    return res.render("./schedule/edit-meet", {meet, title: 'Editar reunión', isAuthenticated: req.isAuthenticated(), user: req.user});
+
+  } catch (error) {
+
+    return next(error);
+  }
+
+  
 }
 
 const editPost = async (req, res, next) => {
@@ -72,10 +81,11 @@ const editPost = async (req, res, next) => {
       if (name) update.name = name;
       if (date) update.date = date;
       if (message) update.message = message;
-      if (typeof done === "boolean") update.done = done;
+      if (done) update.done = done;
 
       const updateMeeting = await Meeting.findByIdAndUpdate(id, update, { new: true });
-      return res.json(updateMeeting);
+      
+      return res.redirect("/meetings");
 
     } catch (error) {
       return next(error);

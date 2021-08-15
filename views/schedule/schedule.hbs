@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/0f65edafbd.js" crossorigin="anonymous"></script>
     <title>{{title}}</title>
 </head>
 
@@ -14,7 +15,7 @@
        <div class="fake-div"></div>
        <div id="menu" class="b-header bg-5">
            <div class="b-header__controls">
-                <div id="btn-menu" class="b-header__icon"></div>
+                <div id="btn-menu" class="fas fa-bars b-header__icon"></div>
                 <div class="b-header__logo">
                     <a href="/"><h2 class="b-header__title">App Schedule</h2></a>
                 </div>
@@ -25,7 +26,7 @@
                 <a class="b-header__link" href="/meetings">Meets</a>
                 <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                 <form class="b-header__form" action="/auth/logout" method="POST">
-                    <button class="b-header__button" type="submit">Out</button>
+                    <button class="b-header__button" type="submit"><i class="fas fa-user-alt-slash"></i></button>
                 </form>
             </div>
         </div>
@@ -34,15 +35,15 @@
               <div class="b-form__inputBox b-controls__button"><input class="b-form__input b-button" type="submit" value="Refresh"></div>
         </form>
         <div class="b-schedule">
-            <h2 class="b-schedule__link">Tareas</h2>
+            <a href="/todos"><h2 class="b-schedule__link">Tareas</h2></a>
             <div class="b-schedule__cards">
                 {{#each scheduleContain.todo}}
                     <ul class="b-card bg-3">
                         <a class="b-card__container" href="todos/todo/{{this.id}}">
                             <div class="b-card__heading">
-                                <li class="b-card__title">{{this.name}}</li>
-                                {{#if this.done}}<li class="b-card__check">Sí</li>{{/if}}
-                                {{#if this.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
+                                <div class="b-card__titleContain"><li class="b-card__title">{{this.name}}</li></div>
+                                {{#if this.done}}<div class="b-card__checkContain"><li class="b-card__check">Sí</li></div>{{/if}}
+                                {{#if this.done}} {{else}}<div class="b-card__checkContain"><li class="b-card__check">No</li></div>{{/if}}
                             </div>
                             <div class="b-card__block">
                                 <li class="b-card__date">{{this.date}}</li>
@@ -54,15 +55,15 @@
             </div>
         </div>
         <div class="b-schedule">
-            <h2 class="b-schedule__link">Reuniones</h2>
+            <a href="/meetings"><h2 class="b-schedule__link">Reuniones</h2></a>
             <div class="b-schedule__cards">
                 {{#each scheduleContain.meeting}}
                     <ul id="card" class="b-card bg-3">
                         <a class="b-card__container" href="meetings/meet/{{this.id}}">
                             <div class="b-card__heading">
-                                <li class="b-card__title">{{this.name}}</li>
-                                {{#if this.done}}<li class="b-card__check">Sí</li>{{/if}}
-                                {{#if this.done}} {{else}}<li class="b-card__check">No</li>{{/if}}
+                                <div class="b-card__titleContain"><li class="b-card__title">{{this.name}}</li></div>
+                                {{#if this.done}}<div class="b-card__checkContain"><li class="b-card__check">Sí</li></div>{{/if}}
+                                {{#if this.done}} {{else}}<div class="b-card__checkContain"><li class="b-card__check">No</li></div>{{/if}}
                             </div>
                             <div class="b-card__block">
                                 <li class="b-card__date">{{this.date}}</li>
