@@ -1,11 +1,19 @@
 const Todo = require('../models/Todo.model');
+const User = require('../models/User.model');
 
 const indexGet = async (req, res, next) => {
+
   try {
-    const todo = await Todo.find();
+    
+    const todo = await Todo.find().populate(
+
+      {
+        path:"user",
+        populate: { path: "User" } 
+      }
+    )
 
     return res.render( "./schedule/todos", { todo, title: 'Lista de Tareas', isAuthenticated: req.isAuthenticated(), user: req.user });
-    // return res.json(todo);
 
   } catch (error) {
 
@@ -58,6 +66,7 @@ const createPost = async (req, res, next) => {
     date,
     message,
     done,
+    user: req.user.id
   });
 
   const todo = await newTodo.save();
