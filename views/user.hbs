@@ -40,8 +40,9 @@
                     <div class="b-user__block">
                         <div class="b-user__text">
                             <li class="b-user__title">{{user.name}}</li>
-                            <li class="b-user__title">{{user.name}}</li>
-                            <li class="b-user__email">{{user.email}}</li>
+                            <li class="b-user__title">{{user.surname}}</li>
+                            <li class="b-user__email">{{user.nick}}</li>
+                            <li class="b-user__email">{{user.birthDay}}</li>
                             <li class="b-user__age">{{user.email}}</li>
                         </div>
                     </div>
@@ -49,11 +50,12 @@
                 <form class="b-user__form" action="/auth/register" method="POST">
                     <h3 class="b-user__head">Edita tu datos</h3>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Name"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="username" placeholder="Nick"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="surname" placeholder="Apellido"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="nick" placeholder="Nick"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="email" placeholder="Email"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="password" name="password" placeholder="Password"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="date" name="age" placeholder="Edad"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="file" name="image" placeholder="Imagen"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="date" name="birthDay" placeholder="Fecha de nacimiento"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="file" name="image" placeholder="Avatar"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input b-button" type="submit"></div>
                 </form>
             </div>

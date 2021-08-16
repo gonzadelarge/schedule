@@ -17,12 +17,14 @@
         <div class="b-header__links"></div>
       </div>
       <div class="c-form">
-        <div class="c-form__links">
-            <h1 class="c-form__title">Register</h1>
-            <a class="c-form__link" href="/auth/login">Log in</a>
+          <div class="c-form__links">
+              <h1 class="c-form__title">Register</h1>
+              <a class="c-form__link" href="/auth/login">Log in</a>
           </div>
           <form class="b-form" action="/auth/register" method="POST">
-              <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Name"/></div>
+              <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Nombre"/></div>
+              <div class="b-form__inputBox"><input class="b-form__input" type="text" name="surname" placeholder="Apellido"/></div>
+              <div class="b-form__inputBox"><input class="b-form__input" type="text" name="nick" placeholder="Nick"/></div>
               <div class="b-form__inputBox"><input class="b-form__input" type="text" name="email" placeholder="Email"/></div>
               <div class="b-form__inputBox"><input class="b-form__input" type="password" name="password" placeholder="Password"/></div>
               <div class="b-form__inputBox"><input class="b-form__input b-button" type="submit"></div>

@@ -688,9 +688,9 @@ html, body, input, select, textarea, button {
 
 .c-form {
   width: 100%;
-  height: 80vh;
-  padding: 4% 0;
-  padding-top: 60px;
+  height: 85vh;
+  padding: 3% 0;
+  padding-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -706,23 +706,17 @@ html, body, input, select, textarea, button {
           justify-content: space-between;
 }
 
-@media (min-width: 560px) {
-  .c-form {
-    padding-top: 90px;
-  }
-}
-
 .c-form__links {
   text-align: center;
 }
 
 .c-form__title {
-  margin: 5px 0;
+  margin: 3px 0;
   color: var(--white-hard);
 }
 
 .c-form__link {
-  margin: 5px 0;
+  margin: 3px 0;
   position: relative;
   color: var(--violet-hard);
 }

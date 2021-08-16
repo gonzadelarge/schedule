@@ -14,7 +14,7 @@ const indexGet = async (req, res, next) => {
 
 const userGet = async (req, res, next) => {
 
-  const { id, name } = req.user
+  const { id } = req.user
 
   try {
     const user = await User.findById(id);
@@ -30,14 +30,17 @@ const editPost = async (req, res, next) => {
 
     try {
         
-        const { name, date, message, done } = req.body;
+        const { name, surname, nick, email, password, birthDay, avatar } = req.body;
     
         const update = {};
         if (name) update.name = name;
-        if (date) update.date = date;
-        if (message) update.message = message;
-        if (typeof done === "boolean") update.done = done;
-    
+        if (surname) update.surname = surname;
+        if (nick) update.nick = nick;
+        if (email) update.email = email;
+        if (password) update.password = password;
+        if (birthDay) update.birthDay = birthDay;
+        if (avatar) update.avatar = avatar;
+        
         const updateUser = await User.findByIdAndUpdate(id, update, { new: true });
         return res.json(updateUser);
 

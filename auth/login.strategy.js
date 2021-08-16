@@ -11,8 +11,7 @@ const bcrypt = require('bcrypt');
         async (req, email, password, done) => {
 
             try{
-                //comprobaremos si el user existe en la base de datos 
-                //comprobaremos si la contraseña es igual a la de la base de datos
+                
                 const existingUser = await User.findOne({ email });
                 
                 if(!existingUser){
@@ -28,10 +27,10 @@ const bcrypt = require('bcrypt');
                     return done(error);
                 }
 
-                existingUser.password = undefined; //IMPORTANTE!!!!!!!!!!!
+                existingUser.password = undefined; 
                 return done(null, existingUser);
 
-            }catch(error){
+            } catch(error){
                 return done(error);
             }
         });

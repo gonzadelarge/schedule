@@ -30,6 +30,8 @@ const registerStrategy = new LocalStrategy(
         email,
         password: hash,
         name: req.body.name,
+        surname: req.body.surname,
+        nick: req.body.nick,
     });
 
     const user = await newUser.save();
