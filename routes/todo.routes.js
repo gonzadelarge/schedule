@@ -4,19 +4,19 @@ const controller = require('../controllers/todos.controller');
 
 const router = express.Router();
 
-router.get('/', controller.indexGet);
+router.get('/', [isAuth], controller.indexGet);
 
-router.get('/todo/:id', controller.oneGet);
+router.get('/todo/:id', [isAuth], controller.oneGet);
 
-router.get('/create', controller.createGet);
+router.get('/create', [isAuth], controller.createGet);
 
-router.post('/create', controller.createPost);
+router.post('/create', [isAuth], controller.createPost);
 
-router.get('/edit/:id', controller.editGet);
+router.get('/edit/:id', [isAuth], controller.editGet);
 
-router.put('/edit', controller.editPost);
+router.put('/edit', [isAuth], controller.editPost);
 
-router.delete('/todo/delete/:id', controller.deletePost);
+router.delete('/todo/delete/:id', [isAuth], controller.deletePost);
 
 // router.get('/filter/:name', controller.nameGet);
 

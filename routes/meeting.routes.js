@@ -5,18 +5,18 @@ const {isAuth} = require('../middlewares/auth.middlewares');
 
 const router = express.Router();
 
-router.get('/', controller.indexGet);
+router.get('/', [isAuth], controller.indexGet);
 
-router.get('/meet/:id', controller.oneGet);
+router.get('/meet/:id', [isAuth], controller.oneGet);
 
-router.get('/create', controller.createGet);
+router.get('/create', [isAuth], controller.createGet);
 
-router.post('/create', controller.createPost);
+router.post('/create', [isAuth], controller.createPost);
 
-router.get('/edit/:id', controller.editGet);
+router.get('/edit/:id', [isAuth], controller.editGet);
 
-router.put('/edit/', controller.editPost);
+router.put('/edit/', [isAuth], controller.editPost);
 
-router.delete('/meet/delete/:id', controller.deletePost);
+router.delete('/meet/delete/:id', [isAuth], controller.deletePost);
 
 module.exports = router;
