@@ -47,8 +47,9 @@
                         </div>
                     </div>
                 </ul>
-                <form class="b-user__form" action="/auth/register" method="POST">
+                <form class="b-user__form" action="/users/edit?_method=PUT" method="POST">
                     <h3 class="b-user__head">Edita tu datos</h3>
+                    <div class="b-form__inputBox d-none"><input class="b-form__input" readonly type="text" name="id" value="{{user.id}}"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Name"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="surname" placeholder="Apellido"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="nick" placeholder="Nick"/></div>

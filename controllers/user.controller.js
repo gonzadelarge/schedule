@@ -30,9 +30,11 @@ const editPost = async (req, res, next) => {
 
     try {
         
-        const { name, surname, nick, email, password, birthDay, avatar } = req.body;
+      console.log(req.body)
+        const { id, name, surname, nick, email, password, birthDay, avatar } = req.body;
     
         const update = {};
+
         if (name) update.name = name;
         if (surname) update.surname = surname;
         if (nick) update.nick = nick;
@@ -42,7 +44,8 @@ const editPost = async (req, res, next) => {
         if (avatar) update.avatar = avatar;
         
         const updateUser = await User.findByIdAndUpdate(id, update, { new: true });
-        return res.json(updateUser);
+        
+        return res.redirect(`/users/user/${id}`);
 
       } catch (error) {
         return next(error);
