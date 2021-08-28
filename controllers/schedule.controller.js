@@ -3,6 +3,9 @@ const Schedule = require('../models/Schedule.model');
 const Todo = require('../models/Todo.model');
 
 const indexGet = async (req, res, next) => {
+
+  const { userId } = req.params;
+  const todoList = [];
     
   try {
 
@@ -17,11 +20,12 @@ const indexGet = async (req, res, next) => {
           populate: { path:"meetings" }
         }
       )
+      
+    
 
-        
     const scheduleContain = schedule[0];
 
-    return res.render("./schedule/schedule", { scheduleContain, isAuthenticated: req.isAuthenticated(), user: req.user });
+    return res.render(`./schedule/schedule`, { scheduleContain, isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
 
@@ -33,13 +37,12 @@ const indexGet = async (req, res, next) => {
 const createPost = async (req, res, next) => {
 
   try{
-        const {todo, meeting} = req.body;
+        const {todo, meeting, user } = req.body;
 
-        const newSchedule = new Schedule({todo, meeting});
+        const newSchedule = new Schedule({todo, meeting, user});
 
         const createEvent = await newSchedule.save();
 
-        console.log(createEvent);
 
         return res.status(200).json(createEvent);
 
@@ -55,12 +58,18 @@ const addPost = async (req, res, next) => {
 
   try {
 
-    const id = req.body.id || '610fff234a01001a2c374150';
+    const id = req.body.id || '6129e98685e0933720682e7a';
+
+    console.log( 'addPost ---> ', id);
+    
+    const { userId } = req.body;
+
     
     const todos = await Todo.find();
     const meetings = await Meeting.find();
 
     const scheduleUpdate = { todo: todos, meeting: meetings };
+
     const scheduleContain = await Schedule.findByIdAndUpdate(
 
       id,
@@ -68,7 +77,7 @@ const addPost = async (req, res, next) => {
       { new: true }
     );
 
-    return res.redirect("/schedule")
+    return res.redirect(`/schedule/${userId}`);
 
   } catch (err) {
 

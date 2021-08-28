@@ -21,9 +21,9 @@
                 </div>
             </div>
             <div class="b-header__links">
-                <a class="b-header__link" href="/schedule">Schedule</a>
-                <a class="b-header__link" href="/todos">Todos</a>
-                <a class="b-header__link" href="/meetings">Meets</a>
+                <a class="b-header__link" href="/schedule/{{user.id}}">Schedule</a>
+                <a class="b-header__link" href="/todos/{{user.id}}">Todos</a>
+                <a class="b-header__link" href="/meetings/{{user.id}}">Meets</a>
                 <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                 <form class="b-header__form" action="/auth/logout" method="POST">
                     <button class="b-header__button" type="submit"><i class="fas fa-user-alt-slash"></i></button>
@@ -35,8 +35,9 @@
             <div class="b-user">
                 <form class="b-user__form" action="/meetings/create" method="POST">
                     <h3 class="b-user__head">Crea tu reunión</h3>
+                    <div class="b-form__inputBox d-none"><input class="b-form__input" readonly type="text" name="user" value="{{user.id}}"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" placeholder="Nombre de la reunión"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" placeholder="Fecha de la reunión"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="date" name="date" placeholder="Fecha de la reunión"/></div>
                     <div class="b-form__inputBox"><select class="b-form__input" name="done" id="done">
                         <option value="true">Terminado</option>
                         <option value="false">Por hacer</option>

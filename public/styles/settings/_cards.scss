@@ -8,14 +8,16 @@
 
     @media(min-width: 860px) {
         width: 48%;
+        height: 175px;
     }
 
     @media(min-width: 1100px) {
-        width: 32%;
+        height: 170px;
     }
 
     @media(min-width: 1450px) {
         width: 24%;
+        height: 160px;
     }
 
     &__container {
@@ -49,21 +51,25 @@
         font-size: 18px;
         font-weight: 600;
         color: var(--white-hard);
+
+        @media(min-width: 550px) {
+            font-size: 16px;
+        }
     }
 
     &__checkContain {
-        width: 35px;
+        width: 30px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
     &__check {
-        width: 30px;
-        height: 30px;
+        width: 27px;
+        height: 27px;
         border-radius: 50%;
         border: 1px solid var(--dark-hard);
-        font-size: 14px;
+        font-size: 12px;
 
         display: flex;
         justify-content: center;
@@ -84,9 +90,17 @@
         color: var(--pink-hard);
         font-size: 13px;
         font-style: italic;
+
+        @media(min-width: 550px) {
+            font-size: 12px;
+        }
     }
 
     &__text {
         font-size: 15px;
+
+        @media(min-width: 550px) {
+            font-size: 13px;
+        }
     }
 }

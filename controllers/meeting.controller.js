@@ -1,8 +1,26 @@
 const Meeting = require('../models/Meeting.model');
 
-const indexGet = async (req, res, next) => {
+  const indexGet = async (req, res, next) => {
+
+  const { userId } = req.params;
+    const meetList = [];
   try {
-    const meeting = await Meeting.find();
+
+    const meeting = await Meeting.find().populate(
+
+      {
+        path:"user",
+        math: { _id: { _id: userId }}
+      }
+    );
+
+    meeting.forEach(element => {
+     
+      
+      if (element.user.id === userId) {
+        meetList.push(element);
+      }
+    });
 
 
     return res.render( "./schedule/meetings", { meeting, title: 'Lista de Reuniones', isAuthenticated: req.isAuthenticated(), user: req.user });
@@ -43,7 +61,8 @@ const createPost = async (req, res, next) => {
     name,
     date,
     message,
-    done
+    done,
+    user: req.user.id
 
   });
 

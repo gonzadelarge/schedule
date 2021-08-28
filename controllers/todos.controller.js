@@ -1,7 +1,10 @@
 const Todo = require('../models/Todo.model');
-const User = require('../models/User.model');
+// const User = require('../models/User.model');
 
 const indexGet = async (req, res, next) => {
+
+  const { userId } = req.params;
+  const listaTodos = [];
 
   try {
     
@@ -9,11 +12,20 @@ const indexGet = async (req, res, next) => {
 
       {
         path:"user",
-        populate: { path: "User" } 
+        math: { _id: { _id: userId }}
       }
     )
 
-    return res.render( "./schedule/todos", { todo, title: 'Lista de Tareas', isAuthenticated: req.isAuthenticated(), user: req.user });
+    todo.forEach(element => {
+     
+      
+      if (element.user.id === userId) {
+        listaTodos.push(element);
+      }
+    });
+
+    // return res.json(todo);
+    return res.render( "./schedule/todos", { listaTodos, title: 'Lista de Tareas', isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
 
@@ -71,7 +83,7 @@ const createPost = async (req, res, next) => {
 
   const todo = await newTodo.save();
 
-  return res.redirect("/todos");
+  return res.redirect(`/todos/${req.user.id}`);
 };
 
 const editGet = async (req, res, next) =>{
@@ -96,7 +108,7 @@ const editPost = async (req, res, next) => {
 
   try {
 
-      const { id, name, date, message, done } = req.body;
+      const { id, userId, name, date, message, done } = req.body;
   
       const update = {};
 
@@ -107,7 +119,7 @@ const editPost = async (req, res, next) => {
   
       const updateTodo = await Todo.findByIdAndUpdate(id, update, { new: true });
 
-      return res.redirect("/todos");
+      return res.redirect(`/todos/${userId}`);
       
     } catch (error) {
       return next(error);

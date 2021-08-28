@@ -5,15 +5,16 @@ const registerGet = (req, res, next) => {
     return res.render("./auth/register");
 }
 
-const registerPost = async (req, res, next) =>{
-    //recibe el parametro de la estrategia creada en el index de auth, en este caso register
+const registerPost = async (req, res, next) => {
+
     const done = ( error, user) =>{
-        if(error){
-            return next(error)
-        }
-        console.log("Usuario registrado con éxito -->", user);
-        return res.redirect("/schedule");
+
+            if (error) return next(error);
+        
+            req.login(user, (error) => (error ? next(error) : res.redirect(`/schedule/${user.id}`)));
+        
     }
+
     passport.authenticate("register",done)(req);
 }
 
@@ -32,7 +33,7 @@ const loginPost = (req, res, next) =>{
                 return next(error);
             }
             console.log("Usuario logueado con exito", user);
-            return res.redirect("/schedule");
+            return res.redirect(`/schedule/${user.id}`);
         })
         
     };

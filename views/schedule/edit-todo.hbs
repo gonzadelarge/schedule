@@ -20,8 +20,8 @@
                 </div>
             </div>
             <div class="b-header__links">
-                <a class="b-header__link" href="/schedule">Schedule</a>
-                <a class="b-header__link" href="/todos">Todos</a>
+                <a class="b-header__link" href="/schedule/{{user.id}}">Schedule</a>
+                <a class="b-header__link" href="/todos/{{user.id}}">Todos</a>
                 <a class="b-header__link" href="/meetings">Meets</a>
                 <a class="b-header__link" href="/users/user/{{user.id}}">{{user.name}}</a>
                 <form class="b-header__form" action="/auth/logout" method="POST">
@@ -35,9 +35,10 @@
             <div class="b-user">
                 <form class="b-user__form" action="/todos/edit?_method=PUT" method="POST">
                     <h3 class="b-user__head">Edita tu reunión</h3>
-                    <div class="b-form__inputBox d-none"><input class="b-form__input" readonly type="text" name="id" value="{{todo.id}}"/></div>
+                    <div class="d-none"><input class="b-form__input" readonly type="text" name="id" value="{{todo.id}}"/></div>
+                    <div class="d-none"><input class="b-form__input" readonly type="text" name="userId" value="{{user.id}}"/></div>
                     <div class="b-form__inputBox"><input class="b-form__input" type="text" name="name" value="{{todo.name}}"/></div>
-                    <div class="b-form__inputBox"><input class="b-form__input" type="text" name="date" value="{{todo.date}}"/></div>
+                    <div class="b-form__inputBox"><input class="b-form__input" type="date" name="date" value="{{todo.date}}"/></div>
                     <div class="b-form__inputBox"><textarea class="b-form__input" name="message" placeholder="{{todo.message}}" cols="30" rows="10"></textarea></div>
                     <div class="b-form__inputBox"><select class="b-form__input" name="done" id="done">
                         <option value="" selected disabled hidden>¿Lo has hecho?</option>

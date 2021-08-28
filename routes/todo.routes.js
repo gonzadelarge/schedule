@@ -4,7 +4,6 @@ const controller = require('../controllers/todos.controller');
 
 const router = express.Router();
 
-router.get('/', [isAuth], controller.indexGet);
 
 router.get('/todo/:id', [isAuth], controller.oneGet);
 
@@ -19,5 +18,8 @@ router.put('/edit', [isAuth], controller.editPost);
 router.delete('/todo/delete/:id', [isAuth], controller.deletePost);
 
 // router.get('/filter/:name', controller.nameGet);
+
+router.get('/:userId', [isAuth], controller.indexGet);
+
 
 module.exports = router;

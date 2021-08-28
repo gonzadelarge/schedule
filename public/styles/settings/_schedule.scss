@@ -6,6 +6,14 @@
     background-color: hsla(0, 0%, 100%, 0.25);
     box-shadow: 0 0 10px 0 var(--gray-soft);
 
+    @media(min-width: 750px) {
+        width: 85%;
+    }
+
+    @media(min-width: 950px) {
+        width: 80%;
+    }
+
     &__link {
         margin: 10px 0;
         font-size: 24px;
