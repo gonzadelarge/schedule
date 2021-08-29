@@ -8,6 +8,8 @@ const session = require('express-session');
 const dotenv = require("dotenv");
 const auth = require("./auth");
 const app = express();
+const cloudinary = require('cloudinary').v2;
+
 
 auth.useStrategies();
 
@@ -53,6 +55,12 @@ app.use((req, res, next) => {
     req.isAuth = req.isAuthenticated();
     next();
  });
+
+ cloudinary.config({ 
+    cloud_name: 'gonzadelarge', 
+    api_key: '832982537229167', 
+    api_secret: 'uZwHbCAyDpl6VQe9kaAp_lXMtU4' 
+  });
 
  app.use(methodOverride('_method'));
 

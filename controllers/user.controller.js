@@ -32,11 +32,7 @@ const editPost = async (req, res, next) => {
 
     try {
         
-      
         const { id, name, surname, nick, email, password, birthDay } = req.body;
-    
-        console.log('Req.file', req.file.filename)
-        console.log('Req.body', req.body)
 
         const update = {};
 
@@ -46,7 +42,7 @@ const editPost = async (req, res, next) => {
         if (email) update.email = email;
         if (password) update.password = password;
         if (birthDay) update.birthDay = birthDay;
-        update.avatar = req.file.filename; // Descubir porque el file no entra en el req.body
+        update.avatar = req.fileUrl; // Descubir porque el file no entra en el req.body
         
         const updateUser = await User.findByIdAndUpdate(id, update, { new: true });
         
