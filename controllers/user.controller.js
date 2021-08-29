@@ -32,7 +32,7 @@ const editPost = async (req, res, next) => {
 
     try {
         
-      console.log(req.body)
+      console.log(req.file)
         const { id, name, surname, nick, email, password, birthDay, avatar } = req.body;
     
         const update = {};
@@ -43,7 +43,7 @@ const editPost = async (req, res, next) => {
         if (email) update.email = email;
         if (password) update.password = password;
         if (birthDay) update.birthDay = birthDay;
-        if (avatar) update.avatar = avatar;
+        if (avatar) update.avatar = req.file.path;
         
         const updateUser = await User.findByIdAndUpdate(id, update, { new: true });
         

@@ -36,7 +36,7 @@
             <div class="b-form__inputBox b-controls__button"><input class="b-form__input b-button" type="submit" value="Refresh"></div>
         </form>
         <div class="b-schedule">
-            <a href="/todos"><h2 class="b-schedule__link">Tareas</h2></a>
+            <a href="/todos/{{user.id}}"><h2 class="b-schedule__link">Tareas</h2></a>
             <div class="b-schedule__cards">
                 {{#each scheduleContain.todo}}
                     <ul class="b-card bg-3">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="b-schedule">
-            <a href="/meetings"><h2 class="b-schedule__link">Reuniones</h2></a>
+            <a href="/meetings/{{user.id}}"><h2 class="b-schedule__link">Reuniones</h2></a>
             <div class="b-schedule__cards">
                 {{#each scheduleContain.meeting}}
                     <ul id="card" class="b-card bg-3">

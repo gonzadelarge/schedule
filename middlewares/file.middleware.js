@@ -6,7 +6,10 @@ const cloudinary = require('cloudinary').v2;
 const ACCEPTED_FILES_EXTENSIONS = ['image/png', 'image/jpg', 'image/jpeg'];
 
 const storage = multer.diskStorage({
+    
     filename: (req, file, callback) => {
+        console.log(file);
+        console.log('Holaaaa');
         const fileName = `${Date.now()}-${file.originalname}`;
         callback(null, fileName);
     },
@@ -17,7 +20,8 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    // console.log(file);
+    console.log(file);
+    console.log('Holaaaa');
     if (!ACCEPTED_FILES_EXTENSIONS.includes(file.mimetype)) {
         const error = new Error('invalid file type');
         error.status = 400;
@@ -35,23 +39,24 @@ const upload = multer({
 /**
  * Subida de imágenes a Cloudinary
  */
-const uploadToCloudinary = async (req, res, next) => {
-    if(req.file) {
-        const path = req.file.path;
-        // Si tengo archivo, lo subo a cloudinary
-        const avatar = await cloudinary.uploader.upload(path);
+// const uploadToCloudinary = async (req, res, next) => {
+//     if(req.file) {
+//         const path = req.file.path;
+//         // Si tengo archivo, lo subo a cloudinary
+//         const avatar = await cloudinary.uploader.upload(path);
         
-        // Cojo la url que me devuelve cloudinary y lo meto al req.fileUrl para poder recibirlo en el controlador
-        req.fileUrl = avatar.secure_url;
+//         // Cojo la url que me devuelve cloudinary y lo meto al req.fileUrl para poder recibirlo en el controlador
+//         req.fileUrl = avatar.secure_url;
 
-        // Eliminamos el archivo de nuestro servidor.
-        await fs.unlinkSync(path);
+//         // Eliminamos el archivo de nuestro servidor.
+//         await fs.unlinkSync(path);
 
-        return next();
-    } else {
-        // No lo subo a cloudinary
-        return next();
-    }
-};
+//         return next();
+//     } else {
+//         // No lo subo a cloudinary
+//         return next();
+//     }
+// };
 
-module.exports = { upload, uploadToCloudinary };
+// module.exports = { upload, uploadToCloudinary };
+module.exports = { upload };

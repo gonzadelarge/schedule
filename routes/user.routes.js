@@ -10,7 +10,7 @@ router.get('/', [isAuth], controller.indexGet);
 
 router.get('/user/:id', [isAuth], controller.userGet);
 
-router.put('/edit', [isAuth, upload.single('avatar')], controller.editPost);
+router.put('/edit', [isAuth, upload.single('image')], controller.editPost);
 
 router.delete('/delete/:id', [isAuth], controller.deletePost);
 

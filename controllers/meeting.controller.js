@@ -23,7 +23,7 @@ const Meeting = require('../models/Meeting.model');
     });
 
 
-    return res.render( "./schedule/meetings", { meeting, title: 'Lista de Reuniones', isAuthenticated: req.isAuthenticated(), user: req.user });
+    return res.render( "./schedule/meetings", { meetList, title: 'Lista de Reuniones', isAuthenticated: req.isAuthenticated(), user: req.user });
     // return res.json(meeting)
 
   } catch (error) {
