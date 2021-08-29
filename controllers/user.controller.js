@@ -19,7 +19,6 @@ const userGet = async (req, res, next) => {
   try {
     const user = await User.findById(id);
 
-    console.log(user);
     return res.render( "./user", { user, title: req.user, isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
@@ -32,8 +31,7 @@ const editPost = async (req, res, next) => {
 
     try {
         
-      console.log(req.file)
-        const { id, name, surname, nick, email, password, birthDay, avatar } = req.body;
+        const { id, name, surname, nick, email, password, birthDay, image } = req.body;
     
         const update = {};
 
@@ -43,7 +41,7 @@ const editPost = async (req, res, next) => {
         if (email) update.email = email;
         if (password) update.password = password;
         if (birthDay) update.birthDay = birthDay;
-        if (avatar) update.avatar = req.file.path;
+        if (image) update.avatar = req.file.path;
         
         const updateUser = await User.findByIdAndUpdate(id, update, { new: true });
         
