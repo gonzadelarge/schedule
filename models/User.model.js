@@ -9,7 +9,7 @@ const userSchema = new Schema(
         email: { type: String, required: true },
         password: { type: String, required: true },
         birthDay: { type: Date },
-        avatar: { type: String, default: 'https://pbs.twimg.com/media/EFIv5HzUcAAdjhl.png' },
+        avatar: { type: String },
     },
     { timestamps: true }
 );  
