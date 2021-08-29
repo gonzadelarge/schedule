@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     buttonMenu();
     colorBackgroundCard();
     listenForm();
+    checkDate();
 })
 
 function buttonMenu() {
@@ -55,5 +56,23 @@ function listenForm() {
             deleteBtn.addEventListener('click', () => form.submit());
         });
     })
+    }
+}
+
+function checkDate() {
+
+    if(document.body.contains(document.getElementById('date'))) {
+
+        let dateText = document.getElementById('date').textContent;
+        console.log('DateTEXT ', dateText);
+
+        if(dateText !== '') {
+
+            const fecha = new Date(dateText);
+            const date = fecha.toLocaleDateString();
+            console.log(date);
+            
+            dateText = date;
+        }
     }
 }

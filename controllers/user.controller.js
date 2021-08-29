@@ -17,9 +17,17 @@ const userGet = async (req, res, next) => {
   const { id } = req.user
 
   try {
+
     const user = await User.findById(id);
 
-    console.log(user);
+    const fecha = new Date(user.birthDay);
+    const date = fecha.toLocaleDateString();
+
+    user.birthDay = date;
+
+    console.log(date)
+    console.log(user.birthDay)
+
     return res.render( "./user", { user, title: req.user, isAuthenticated: req.isAuthenticated(), user: req.user });
 
   } catch (error) {
