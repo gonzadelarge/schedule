@@ -6,6 +6,8 @@ const indexGet = async (req, res, next) => {
   const { userId } = req.params;
   const listaTodos = [];
 
+  console.log(userId)
+
   try {
     
     const todo = await Todo.find().populate(

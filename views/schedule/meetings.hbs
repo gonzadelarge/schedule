@@ -37,12 +37,12 @@
         <div class="b-schedule">
             <div class="b-schedule__controls">
                 <h2 class="b-schedule__link">Reuniones</h2>
-                <a href="meetings/create">Nueva Reunión</a>    
+                <a href="/meetings/create">Nueva Reunión</a>    
             </div>
             <div class="b-schedule__cards">
                 {{#each meetList}}
                     <ul class="b-card bg-3">
-                        <a class="b-card__container" href="meetings/meet/{{id}}">
+                        <a class="b-card__container" href="/meetings/meet/{{id}}">
                             <div class="b-card__heading">
                             <div class="b-card__titleContain"><li class="b-card__title">{{name}}</li></div>
                             {{#if done}}<div class="b-card__checkContain"><li class="b-card__check">Sí</li></div>{{/if}}

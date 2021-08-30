@@ -2,22 +2,23 @@ const Meeting = require('../models/Meeting.model');
 
   const indexGet = async (req, res, next) => {
 
-  const { userId } = req.params;
+    const { id } = req.params;
     const meetList = [];
+
   try {
 
     const meeting = await Meeting.find().populate(
 
       {
         path:"user",
-        math: { _id: { _id: userId }}
+        math: { _id: { _id: id }}
       }
     );
 
     meeting.forEach(element => {
      
       
-      if (element.user.id === userId) {
+      if (element.user.id === id) {
         meetList.push(element);
       }
     });
@@ -68,7 +69,7 @@ const createPost = async (req, res, next) => {
 
   const meeting = await newMeeting.save();
 
-  return res.redirect("/meetings");
+  return res.redirect(`/meetings/${req.user.id}`);
 };
 
 const editGet = async (req, res, next) =>{
@@ -104,7 +105,7 @@ const editPost = async (req, res, next) => {
 
       const updateMeeting = await Meeting.findByIdAndUpdate(id, update, { new: true });
       
-      return res.redirect("/meetings");
+      return res.redirect(`/meetings/${req.user.id}`);
 
     } catch (error) {
       return next(error);
