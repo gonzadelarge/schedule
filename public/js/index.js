@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     colorBackgroundCard();
     listenForm();
     checkDate();
+    filterTodos();
 })
 
 function buttonMenu() {
@@ -74,5 +75,30 @@ function checkDate() {
             
             dateText = date;
         }
+    }
+}
+
+function filterTodos() {
+
+    if(document.body.contains(document.getElementById('filter'))) {
+
+        const input = document.getElementById('filter');
+        const todoTitle = document.querySelectorAll('.b-card__title');
+        // const todoContainer = document.querySelectorAll('.b-card__container');
+
+
+            input.addEventListener('input', () => {
+
+                todoTitle.forEach( todo => {
+                    let todoContainer = todo.parentNode.parentNode.parentNode.parentNode;
+                    
+                    if (!todo.textContent.includes(input.value.toLowerCase())) {
+                        todoContainer.classList.add('d-none');
+                    }  else {
+                        todoContainer.classList.remove('d-none')
+                    }
+                })
+            })
+
     }
 }
