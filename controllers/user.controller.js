@@ -25,8 +25,8 @@ const userGet = async (req, res, next) => {
 
     user.birthDay = date;
 
-    console.log(date)
-    console.log(user.birthDay)
+    console.log('La fecha buena --->', date);
+    console.log('La fecha mala ---->', user.birthDay);
 
     return res.render( "./user", { user, title: req.user, isAuthenticated: req.isAuthenticated(), user: req.user });
 
@@ -71,7 +71,7 @@ const deletePost = async (req, res, next) => {
       if (!deleted) {
         return res.json("El elemento que querías borrar no existe");
       } else {
-        return res.redirect("/todo");
+        return res.redirect("/");
       }
   
     } catch (error) {

@@ -32,7 +32,6 @@ const loginPost = (req, res, next) =>{
             if(error){
                 return next(error);
             }
-            console.log("Usuario logueado con exito", user);
             return res.redirect(`/schedule/${user.id}`);
         })
         

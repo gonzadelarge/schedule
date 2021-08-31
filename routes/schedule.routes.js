@@ -5,7 +5,7 @@ const {isAuth} = require('../middlewares/auth.middlewares');
 const router = express.Router();
 
 
-router.post('/create', [isAuth], controller.createPost);
+router.post('/create', controller.createPost);
 
 router.put('/add', [isAuth], controller.addPost);
 

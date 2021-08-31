@@ -37,7 +37,7 @@
         <div class="b-schedule">
             <div class="b-schedule__controls">
                 <h2 class="b-schedule__link">Tareas</h2>
-                <a href="/todos/create">Nueva tarea</a>    
+                <a class="b-schedule__new" href="/todos/create/{{user.id}}"><i class="fas fa-plus-circle"></i>Nueva tarea</a>    
             </div>
             <div class="b-schedule__cards">
                 {{#each listaTodos}}

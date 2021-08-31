@@ -933,6 +933,20 @@ html, body, input, select, textarea, button {
   color: var(--blue-hard);
 }
 
+.b-schedule__new {
+  margin: 5px 0;
+  font-size: 16px;
+  color: var(--orange-hard);
+}
+
+.b-schedule__new i {
+  margin-right: 10px;
+}
+
+.b-schedule__new:hover {
+  font-weight: 600;
+}
+
 .b-schedule__cards {
   display: -webkit-box;
   display: -ms-flexbox;

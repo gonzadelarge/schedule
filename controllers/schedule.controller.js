@@ -13,15 +13,15 @@ const indexGet = async (req, res, next) => {
       
       {
         path:"todo",
-        populate: { path:"Todo" }
+        populate: { path:"Todo" },
+        math: { _id: { _id: userId }}
       }).populate(
         {
           path:"meeting",
-          populate: { path:"meetings" }
+          populate: { path:"meetings" },
+          math: { _id: { _id: userId }}
         }
       )
-      
-    
 
     const scheduleContain = schedule[0];
 
@@ -58,17 +58,20 @@ const addPost = async (req, res, next) => {
 
   try {
 
-    const id = req.body.id || '6129e98685e0933720682e7a';
+    const id = req.body.id || '612dff7ad73e5213e0d7092b';
 
     console.log( 'addPost ---> ', id);
     
     const { userId } = req.body;
 
-    
+    console.log(userId)
+
     const todos = await Todo.find();
     const meetings = await Meeting.find();
 
     const scheduleUpdate = { todo: todos, meeting: meetings };
+
+    console.log(scheduleUpdate);
 
     const scheduleContain = await Schedule.findByIdAndUpdate(
 

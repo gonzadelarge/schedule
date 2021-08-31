@@ -84,15 +84,15 @@ function filterTodos() {
 
         const input = document.getElementById('filter');
         const todoTitle = document.querySelectorAll('.b-card__title');
-        // const todoContainer = document.querySelectorAll('.b-card__container');
-
-
+    
             input.addEventListener('input', () => {
 
                 todoTitle.forEach( todo => {
-                    let todoContainer = todo.parentNode.parentNode.parentNode.parentNode;
+
+                    const title = todo.textContent.toLocaleLowerCase();
+                    const todoContainer = todo.parentNode.parentNode.parentNode.parentNode; // ÑAPA DE LAS GORDAAAAS
                     
-                    if (!todo.textContent.includes(input.value.toLowerCase())) {
+                    if (!title.includes(input.value.toLowerCase())) {
                         todoContainer.classList.add('d-none');
                     }  else {
                         todoContainer.classList.remove('d-none')

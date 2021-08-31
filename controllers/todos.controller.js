@@ -68,7 +68,7 @@ const nameGet = async (req, res, next) => {
 };
 
 const createGet = (req, res, next) => {
-  return res.render("./schedule/new-todo");
+  return res.render("./schedule/new-todo", { id: req.user.id, user: req.user });
 }
 
 const createPost = async (req, res, next) => {

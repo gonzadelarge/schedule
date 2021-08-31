@@ -20,6 +20,21 @@
         color: var(--blue-hard);
     }
 
+    &__new {
+        margin: 5px 0;
+        font-size: 16px;
+        color: var(--orange-hard);
+
+        & i {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            font-weight: 600;
+        }
+        
+    }
+
     &__cards {
         display: flex;
         flex-direction: column;

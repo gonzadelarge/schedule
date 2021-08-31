@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/meet/:id', [isAuth], controller.oneGet);
 
-router.get('/create', [isAuth], controller.createGet);
+router.get('/create/:id', [isAuth], controller.createGet);
 
 router.post('/create', [isAuth], controller.createPost);
 
