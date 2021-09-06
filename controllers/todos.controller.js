@@ -131,6 +131,7 @@ const editPost = async (req, res, next) => {
 const deletePost = async (req, res, next) => {
 
   const { id } = req.params;
+  const { userId } = req.body;
 
   try {
     const deleted = await Todo.findByIdAndDelete(id);
@@ -138,7 +139,7 @@ const deletePost = async (req, res, next) => {
     if (!deleted) {
       return res.json("El elemento que querías borrar no existe");
     } else {
-      return res.redirect("/todos");
+      return res.redirect(`/todos/${userId}`);
     }
 
   } catch (error) {
